@@ -3,11 +3,46 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/creationFragment">
+    app:startDestination="@id/splashFragment">
 
+    <fragment
+        android:id="@+id/whatIsLoftFragment"
+        android:name="io.github.louistsaitszho.loft.onboarding.WhatIsLoftFragment"
+        android:label="fragment_what_is_loft"
+        tools:layout="@layout/fragment_what_is_loft">
+        <action
+            android:id="@+id/action_whatIsLoftFragment_to_enterLoftFragment"
+            app:destination="@id/enterLoftFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/enterLoftFragment"
+        android:name="io.github.louistsaitszho.loft.onboarding.EnterLoftFragment"
+        android:label="fragment_enter_loft"
+        tools:layout="@layout/fragment_enter_loft">
+        <action
+            android:id="@+id/action_enterLoftFragment_to_joiningFragment"
+            app:destination="@id/joiningFragment" />
+        <action
+            android:id="@+id/action_enterLoftFragment_to_creationFragment"
+            app:destination="@id/creationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/joiningFragment"
+        android:name="io.github.louistsaitszho.loft.joining.JoiningFragment"
+        android:label="fragment_joining"
+        tools:layout="@layout/fragment_joining" />
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="io.github.louistsaitszho.loft.splash.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splashFragment_to_whatIsLoftFragment"
+            app:destination="@id/whatIsLoftFragment" />
+    </fragment>
     <fragment
         android:id="@+id/creationFragment"
         android:name="io.github.louistsaitszho.loft.creation.CreationFragment"
-        android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" />
+        android:label="fragment_creation"
+        tools:layout="@layout/fragment_creation" />
 </navigation>
