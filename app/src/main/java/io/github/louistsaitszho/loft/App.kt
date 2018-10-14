@@ -32,6 +32,12 @@ class App : Application() {
     private fun setupStrictMode() {
         if (BuildConfig.DEBUG) {
             //TODO is threadPolicy still relevant with coroutine since it actually don't block the thread?
+//            StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.Builder()
+//                    .detectAll()
+//                    .penaltyLog()
+//                    .penaltyDeath()
+//                    .build()
+//            )
             StrictMode.setVmPolicy(StrictMode.VmPolicy.Builder()
                     .detectAll()
                     .penaltyLog()

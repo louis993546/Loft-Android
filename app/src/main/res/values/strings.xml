@@ -3,4 +3,6 @@
     <string name="what_is_loft_description">Loft makes living with people easier</string>
     <string name="create_new_loft_button">Create new loft</string>
     <string name="join_a_loft_button">Join a loft</string>
+    <string name="tab_title_chat">Chat</string>
+    <string name="tab_title_notes">Notes</string>
 </resources>

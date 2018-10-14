@@ -18,6 +18,6 @@ class MainFragment : ScopedFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         tab_layout.setupWithViewPager(view_pager)
-        view_pager.adapter = MainPagerAdapter(requireFragmentManager())
+        view_pager.adapter = MainPagerAdapter(requireFragmentManager(), requireContext())
     }
 }
