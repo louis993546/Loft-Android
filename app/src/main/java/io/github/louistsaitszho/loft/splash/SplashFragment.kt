@@ -8,8 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import io.github.louistsaitszho.loft.R
+import kotlinx.coroutines.experimental.*
+import org.koin.android.viewmodel.ext.android.viewModel as viewModelLazily
 
 class SplashFragment : Fragment() {
+
+    private val viewModel: SplashViewModel by viewModelLazily()
+
+    private val runningJobs = mutableListOf<Job>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -18,9 +24,28 @@ class SplashFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+
+        val navigationJob = GlobalScope.async(Dispatchers.IO) {
+            val navigationAction = if (viewModel.isSignedIn()) {
+                TODO("In progress")
+            } else {
+                R.id.action_splashFragment_to_whatIsLoftFragment
+            }
+            withContext(Dispatchers.Main) {
+                navigateToNextWithDelay(action = navigationAction)
+            }
+        }
+
+        runningJobs.add(navigationJob)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        runningJobs.forEach { it.cancel() }
+    }
+
+    private fun navigateToNextWithDelay(action: Int, delayMills: Long = 2000) {
         val delayHandler = Handler()
-        delayHandler.postDelayed({
-            findNavController().navigate(R.id.action_splashFragment_to_whatIsLoftFragment)
-        }, 2000)
+        delayHandler.postDelayed({ findNavController().navigate(action) }, delayMills)
     }
 }
