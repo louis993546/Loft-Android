@@ -14,7 +14,6 @@ import org.koin.android.viewmodel.ext.android.viewModel as viewModelLazily
 class SplashFragment : Fragment() {
 
     private val viewModel: SplashViewModel by viewModelLazily()
-
     private val runningJobs = mutableListOf<Job>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -25,11 +24,13 @@ class SplashFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        val navigationJob = GlobalScope.async(Dispatchers.IO) {
-            val navigationAction = if (viewModel.isSignedIn()) {
-                TODO("In progress")
-            } else {
-                R.id.action_splashFragment_to_whatIsLoftFragment
+        val navigationJob = GlobalScope.launch {
+            val navigationAction = withContext(Dispatchers.IO) {
+                if (viewModel.isSignedIn()) {
+                    TODO("Not implemented")
+                } else {
+                    R.id.action_splashFragment_to_whatIsLoftFragment
+                }
             }
             withContext(Dispatchers.Main) {
                 navigateToNextWithDelay(action = navigationAction)

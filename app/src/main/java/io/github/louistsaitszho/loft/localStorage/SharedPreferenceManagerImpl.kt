@@ -24,4 +24,8 @@ class SharedPreferenceManagerImpl(private val context: Context) : SharedPreferen
     override suspend fun getToken(): String = GlobalScope.async {
         sharedPreference.getString(KEY_TOKEN, "")
     }.await()
+
+    override fun storeToken(token: String) {
+        sharedPreference.edit().putString(KEY_TOKEN, token).apply()
+    }
 }

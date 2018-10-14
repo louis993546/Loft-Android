@@ -4,4 +4,6 @@ interface SharedPreferenceManager {
     suspend fun isSignedIn(): Boolean
 
     suspend fun getToken(): String
+
+    fun storeToken(token: String)
 }
