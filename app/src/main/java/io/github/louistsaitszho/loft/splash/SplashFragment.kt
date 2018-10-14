@@ -2,19 +2,21 @@ package io.github.louistsaitszho.loft.splash
 
 import android.os.Bundle
 import android.os.Handler
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import io.github.louistsaitszho.loft.R
-import kotlinx.coroutines.experimental.*
+import io.github.louistsaitszho.loft.ScopedFragment
+import kotlinx.coroutines.experimental.Dispatchers
+import kotlinx.coroutines.experimental.GlobalScope
+import kotlinx.coroutines.experimental.launch
+import kotlinx.coroutines.experimental.withContext
 import org.koin.android.viewmodel.ext.android.viewModel as viewModelLazily
 
-class SplashFragment : Fragment() {
+class SplashFragment : ScopedFragment() {
 
     private val viewModel: SplashViewModel by viewModelLazily()
-    private val runningJobs = mutableListOf<Job>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -24,10 +26,10 @@ class SplashFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        val navigationJob = GlobalScope.launch {
+        GlobalScope.launch {
             val navigationAction = withContext(Dispatchers.IO) {
                 if (viewModel.isSignedIn()) {
-                    TODO("Not implemented")
+                    R.id.action_splashFragment_to_mainFragment
                 } else {
                     R.id.action_splashFragment_to_whatIsLoftFragment
                 }
@@ -36,13 +38,6 @@ class SplashFragment : Fragment() {
                 navigateToNextWithDelay(action = navigationAction)
             }
         }
-
-        runningJobs.add(navigationJob)
-    }
-
-    override fun onStop() {
-        super.onStop()
-        runningJobs.forEach { it.cancel() }
     }
 
     private fun navigateToNextWithDelay(action: Int, delayMills: Long = 2000) {

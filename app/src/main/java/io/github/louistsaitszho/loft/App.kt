@@ -6,6 +6,8 @@ import com.jakewharton.threetenabp.AndroidThreeTen
 import io.github.louistsaitszho.loft.joining.JoiningViewModel
 import io.github.louistsaitszho.loft.localStorage.SharedPreferenceManager
 import io.github.louistsaitszho.loft.localStorage.SharedPreferenceManagerImpl
+import io.github.louistsaitszho.loft.network.API
+import io.github.louistsaitszho.loft.network.APIImpl
 import io.github.louistsaitszho.loft.notes.NotesRepository
 import io.github.louistsaitszho.loft.notes.NotesRepositoryImpl
 import io.github.louistsaitszho.loft.notes.NotesViewModel
@@ -50,6 +52,7 @@ class App : Application() {
 
 val appModule = module {
     single<SharedPreferenceManager> { SharedPreferenceManagerImpl(androidContext()) }
+    single<API> { APIImpl() }
     single<NotesRepository> { NotesRepositoryImpl() }
     single<SplashRepository> { SplashRepositoryImpl(get()) }
     viewModel { JoiningViewModel() }

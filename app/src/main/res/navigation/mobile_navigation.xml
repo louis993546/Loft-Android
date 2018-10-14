@@ -12,11 +12,7 @@
         tools:layout="@layout/fragment_what_is_loft">
         <action
             android:id="@+id/action_whatIsLoftFragment_to_enterLoftFragment"
-            app:destination="@id/enterLoftFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:destination="@id/enterLoftFragment" />
     </fragment>
     <fragment
         android:id="@+id/enterLoftFragment"
@@ -43,11 +39,12 @@
         <action
             android:id="@+id/action_splashFragment_to_whatIsLoftFragment"
             app:destination="@id/whatIsLoftFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"
-            app:popUpTo="@id/mobile_navigation"
+            app:popUpTo="@+id/mobile_navigation"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:popUpTo="@+id/mobile_navigation"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
@@ -55,4 +52,9 @@
         android:name="io.github.louistsaitszho.loft.creation.CreationFragment"
         android:label="fragment_creation"
         tools:layout="@layout/fragment_creation" />
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="io.github.louistsaitszho.loft.main.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" />
 </navigation>

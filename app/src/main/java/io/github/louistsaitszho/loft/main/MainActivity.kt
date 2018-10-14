@@ -1,8 +1,9 @@
-package io.github.louistsaitszho.loft
+package io.github.louistsaitszho.loft.main
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import androidx.navigation.findNavController
+import io.github.louistsaitszho.loft.R
 
 class MainActivity : AppCompatActivity() {
 
