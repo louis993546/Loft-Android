@@ -48,6 +48,7 @@
         app:layout_constraintBottom_toBottomOf="@id/fab_create_loft"
         app:layout_constraintEnd_toStartOf="@id/fab_create_loft"
         app:layout_constraintStart_toStartOf="@id/image_view_illustration_enter_loft"
+        style="@style/BodyText.OnPrimary"
         app:layout_constraintTop_toTopOf="@id/fab_create_loft" />
 
     <TextView
@@ -58,6 +59,7 @@
         app:layout_constraintBottom_toBottomOf="@id/fab_join_loft"
         app:layout_constraintEnd_toStartOf="@id/fab_join_loft"
         app:layout_constraintStart_toStartOf="@id/image_view_illustration_enter_loft"
+        style="@style/BodyText.OnPrimary"
         app:layout_constraintTop_toTopOf="@id/fab_join_loft" />
 
 </android.support.constraint.ConstraintLayout>
