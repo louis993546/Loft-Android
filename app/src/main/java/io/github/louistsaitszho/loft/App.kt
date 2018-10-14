@@ -3,9 +3,14 @@ package io.github.louistsaitszho.loft
 import android.app.Application
 import android.os.StrictMode
 import com.jakewharton.threetenabp.AndroidThreeTen
+import io.github.louistsaitszho.loft.creation.CreationRepository
+import io.github.louistsaitszho.loft.creation.CreationRepositoryImpl
+import io.github.louistsaitszho.loft.creation.CreationViewModel
 import io.github.louistsaitszho.loft.joining.JoiningViewModel
 import io.github.louistsaitszho.loft.localStorage.SharedPreferenceManager
 import io.github.louistsaitszho.loft.localStorage.SharedPreferenceManagerImpl
+import io.github.louistsaitszho.loft.main.MainRepository
+import io.github.louistsaitszho.loft.main.MainRepositoryImpl
 import io.github.louistsaitszho.loft.network.API
 import io.github.louistsaitszho.loft.network.APIImpl
 import io.github.louistsaitszho.loft.notes.NotesRepository
@@ -54,8 +59,11 @@ class App : Application() {
 val appModule = module {
     single<SharedPreferenceManager> { SharedPreferenceManagerImpl(androidApplication()) }
     single<API> { APIImpl() }
+    single<MainRepository> { MainRepositoryImpl() }
+    single<CreationRepository> { CreationRepositoryImpl(api = get()) }
     single<NotesRepository> { NotesRepositoryImpl(api = get()) }
     single<SplashRepository> { SplashRepositoryImpl(sharedPreference = get()) }
+    viewModel { CreationViewModel(repository = get()) }
     viewModel { JoiningViewModel() }
     viewModel { NotesViewModel(repository = get()) }
     viewModel { SplashViewModel(repository = get()) }

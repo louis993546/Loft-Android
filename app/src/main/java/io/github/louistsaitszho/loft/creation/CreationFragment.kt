@@ -6,11 +6,42 @@ import android.view.View
 import android.view.ViewGroup
 import io.github.louistsaitszho.loft.R
 import io.github.louistsaitszho.loft.ScopedFragment
+import io.github.louistsaitszho.loft.utils.getInputText
+import io.github.louistsaitszho.loft.utils.hideSoftKeyboard
+import io.github.louistsaitszho.loft.utils.showSoftKeyboard
+import kotlinx.android.synthetic.main.fragment_creation.*
+import timber.log.Timber
+import org.koin.android.viewmodel.ext.android.viewModel as viewModelLazily
 
 class CreationFragment : ScopedFragment() {
 
+    private val viewModel: CreationViewModel by viewModelLazily()
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_creation, container, false)
+        val view = inflater.inflate(R.layout.fragment_creation, container, false)
+        subscribeToAllLiveData()
+        return view
+    }
+
+    private fun subscribeToAllLiveData() {
+        //TODO
+    }
+
+    override fun onStart() {
+        super.onStart()
+        showSoftKeyboard()
+        fab_create_loft_confirm.setOnClickListener {
+            Timber.d("fab create loft clicked")
+            viewModel.createLoft(
+                    loftName = edit_text_loft_name.getInputText(),
+                    yourName = edit_text_your_name.getInputText()
+            )
+            hideSoftKeyboard()
+        }
+        edit_text_your_name.setOnEditorActionListener { v, actionId, event ->
+            Timber.d("your name action triggered: $actionId, $event")
+            true
+        }
     }
 }
