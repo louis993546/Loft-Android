@@ -5,4 +5,6 @@
     <string name="join_a_loft_button">Join a loft</string>
     <string name="tab_title_chat">Chat</string>
     <string name="tab_title_notes">Notes</string>
+    <string name="tab_title_to_do">To-do</string>
+    <string name="tab_title_schedule">Schedule</string>
 </resources>

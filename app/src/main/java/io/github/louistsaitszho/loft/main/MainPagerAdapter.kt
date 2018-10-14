@@ -13,14 +13,16 @@ class MainPagerAdapter(
         val context: Context
 ) : FragmentPagerAdapter(fragmentManager) {
     companion object {
-        const val PAGE_COUNT = 2
+        const val PAGE_COUNT = 4
     }
 
     override fun getItem(position: Int): Fragment {
         return when (position) {
             0 -> ConstructionFragment()
             1 -> NotesFragment()
-            else -> throw IllegalArgumentException("Do not have any page >= $PAGE_COUNT")
+            2 -> ConstructionFragment()
+            3 -> ConstructionFragment()
+            else -> throw IllegalArgumentException("There is only $PAGE_COUNT pages here")
         }
     }
 
@@ -29,6 +31,8 @@ class MainPagerAdapter(
     override fun getPageTitle(position: Int): CharSequence? = when (position) {
         0 -> context.getString(R.string.tab_title_chat)
         1 -> context.getString(R.string.tab_title_notes)
-        else -> throw IllegalArgumentException("Do not have any page >= $PAGE_COUNT")
+        2 -> context.getString(R.string.tab_title_to_do)
+        3 -> context.getString(R.string.tab_title_schedule)
+        else -> throw IllegalArgumentException("There is only $PAGE_COUNT pages here")
     }
 }
