@@ -1,5 +1,6 @@
 package io.github.louistsaitszho.loft.creation
 
+import android.arch.lifecycle.Observer
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -25,19 +26,22 @@ class CreationFragment : ScopedFragment() {
     }
 
     private fun subscribeToAllLiveData() {
-        //TODO
+        viewModel.keyboardUp.observe(this, Observer { up ->
+            when (up) {
+                true -> showSoftKeyboard()
+                false -> hideSoftKeyboard()
+            }
+        })
     }
 
     override fun onStart() {
         super.onStart()
-        showSoftKeyboard()
         fab_create_loft_confirm.setOnClickListener {
             Timber.d("fab create loft clicked")
             viewModel.createLoft(
                     loftName = edit_text_loft_name.getInputText(),
                     yourName = edit_text_your_name.getInputText()
             )
-            hideSoftKeyboard()
         }
         edit_text_your_name.setOnEditorActionListener { v, actionId, event ->
             Timber.d("your name action triggered: $actionId, $event")

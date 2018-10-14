@@ -59,10 +59,12 @@ class App : Application() {
 val appModule = module {
     single<SharedPreferenceManager> { SharedPreferenceManagerImpl(androidApplication()) }
     single<API> { APIImpl() }
+
     single<MainRepository> { MainRepositoryImpl() }
     single<CreationRepository> { CreationRepositoryImpl(api = get()) }
     single<NotesRepository> { NotesRepositoryImpl(api = get()) }
     single<SplashRepository> { SplashRepositoryImpl(sharedPreference = get()) }
+
     viewModel { CreationViewModel(repository = get()) }
     viewModel { JoiningViewModel() }
     viewModel { NotesViewModel(repository = get()) }
