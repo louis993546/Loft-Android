@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import io.github.louistsaitszho.loft.R
 import io.github.louistsaitszho.loft.ScopedFragment
 import kotlinx.coroutines.experimental.Dispatchers
-import kotlinx.coroutines.experimental.GlobalScope
+import kotlinx.coroutines.experimental.async
 import kotlinx.coroutines.experimental.launch
 import kotlinx.coroutines.experimental.withContext
 import org.koin.android.viewmodel.ext.android.viewModel as viewModelLazily
@@ -25,18 +25,11 @@ class SplashFragment : ScopedFragment() {
 
     override fun onStart() {
         super.onStart()
-
-        GlobalScope.launch {
-            val navigationAction = withContext(Dispatchers.IO) {
-                if (viewModel.isSignedIn()) {
-                    R.id.action_splashFragment_to_mainFragment
-                } else {
-                    R.id.action_splashFragment_to_whatIsLoftFragment
-                }
-            }
-            withContext(Dispatchers.Main) {
-                navigateToNextWithDelay(action = navigationAction)
-            }
+        launch {
+            val isSignedIn = async(Dispatchers.IO) { viewModel.isSignedIn() }
+            val navigationAction = if (isSignedIn.await()) R.id.action_splashFragment_to_mainFragment
+            else R.id.action_splashFragment_to_whatIsLoftFragment
+            withContext(Dispatchers.Main) { navigateToNextWithDelay(action = navigationAction) }
         }
     }
 

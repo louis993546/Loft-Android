@@ -15,15 +15,15 @@ import io.github.louistsaitszho.loft.splash.SplashRepository
 import io.github.louistsaitszho.loft.splash.SplashRepositoryImpl
 import io.github.louistsaitszho.loft.splash.SplashViewModel
 import org.koin.android.ext.android.startKoin
-import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidApplication
 import org.koin.android.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
 import timber.log.Timber
 
 class App : Application() {
     override fun onCreate() {
-        setupStrictMode()
         super.onCreate()
+        setupStrictMode()
         Timber.plant(getTree())
         AndroidThreeTen.init(this)
         startKoin(this, listOf(appModule))
@@ -31,12 +31,7 @@ class App : Application() {
 
     private fun setupStrictMode() {
         if (BuildConfig.DEBUG) {
-            StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.Builder()
-                    .detectAll()
-                    .penaltyLog()
-                    .penaltyDeath()
-                    .build()
-            )
+            //TODO is threadPolicy still relevant with coroutine since it actually don't block the thread?
             StrictMode.setVmPolicy(StrictMode.VmPolicy.Builder()
                     .detectAll()
                     .penaltyLog()
@@ -51,11 +46,11 @@ class App : Application() {
 }
 
 val appModule = module {
-    single<SharedPreferenceManager> { SharedPreferenceManagerImpl(androidContext()) }
+    single<SharedPreferenceManager> { SharedPreferenceManagerImpl(androidApplication()) }
     single<API> { APIImpl() }
-    single<NotesRepository> { NotesRepositoryImpl() }
-    single<SplashRepository> { SplashRepositoryImpl(get()) }
+    single<NotesRepository> { NotesRepositoryImpl(api = get()) }
+    single<SplashRepository> { SplashRepositoryImpl(sharedPreference = get()) }
     viewModel { JoiningViewModel() }
-    viewModel { NotesViewModel(get()) }
-    viewModel { SplashViewModel(get()) }
+    viewModel { NotesViewModel(repository = get()) }
+    viewModel { SplashViewModel(repository = get()) }
 }

@@ -1,9 +1,9 @@
 package io.github.louistsaitszho.loft.localStorage
 
 interface SharedPreferenceManager {
-    suspend fun isSignedIn(): Boolean
+    fun isSignedIn(): Boolean
 
-    suspend fun getToken(): String
+    fun getToken(): String
 
     fun storeToken(token: String)
 }

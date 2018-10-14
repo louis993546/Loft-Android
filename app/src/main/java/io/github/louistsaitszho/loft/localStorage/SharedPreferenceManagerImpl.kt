@@ -2,10 +2,10 @@ package io.github.louistsaitszho.loft.localStorage
 
 import android.content.Context
 import android.content.SharedPreferences
-import kotlinx.coroutines.experimental.Dispatchers
-import kotlinx.coroutines.experimental.GlobalScope
-import kotlinx.coroutines.experimental.async
 
+/**
+ * TODO remove GlobalScope. Find out how to "pass" the scope of whoever is using it
+ */
 class SharedPreferenceManagerImpl(private val context: Context) : SharedPreferenceManager {
 
     companion object {
@@ -17,13 +17,9 @@ class SharedPreferenceManagerImpl(private val context: Context) : SharedPreferen
         context.getSharedPreferences(PREFERENCE_ID, Context.MODE_PRIVATE)
     }
 
-    override suspend fun isSignedIn(): Boolean = GlobalScope.async(Dispatchers.IO) {
-        sharedPreference.contains(KEY_TOKEN)
-    }.await()
+    override fun isSignedIn(): Boolean = sharedPreference.contains(KEY_TOKEN)
 
-    override suspend fun getToken(): String = GlobalScope.async {
-        sharedPreference.getString(KEY_TOKEN, "")
-    }.await()
+    override fun getToken(): String = sharedPreference.getString(KEY_TOKEN, "")
 
     override fun storeToken(token: String) {
         sharedPreference.edit().putString(KEY_TOKEN, token).apply()

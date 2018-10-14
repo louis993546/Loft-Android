@@ -6,6 +6,6 @@ class SplashRepositoryImpl(
         private val sharedPreference: SharedPreferenceManager
 ) : SplashRepository {
 
-    override suspend fun isSignedIn() = sharedPreference.isSignedIn()
+    override fun isSignedIn() = sharedPreference.isSignedIn()
 
 }
