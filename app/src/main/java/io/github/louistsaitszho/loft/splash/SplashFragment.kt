@@ -25,6 +25,7 @@ class SplashFragment : ScopedFragment() {
 
     override fun onStart() {
         super.onStart()
+        //TODO move coroutine to viewmodel?
         launch {
             val isSignedIn = async(Dispatchers.IO) { viewModel.isSignedIn() }
             val navigationAction = if (isSignedIn.await()) R.id.action_splashFragment_to_mainFragment
