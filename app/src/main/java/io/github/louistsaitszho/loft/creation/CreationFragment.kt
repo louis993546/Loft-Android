@@ -5,11 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import io.github.louistasitszho.loft.common.utils.getInputText
+import io.github.louistasitszho.loft.common.utils.hideSoftKeyboard
+import io.github.louistasitszho.loft.common.utils.showSoftKeyboard
 import io.github.louistsaitszho.loft.R
 import io.github.louistsaitszho.loft.ScopedFragment
-import io.github.louistsaitszho.loft.utils.getInputText
-import io.github.louistsaitszho.loft.utils.hideSoftKeyboard
-import io.github.louistsaitszho.loft.utils.showSoftKeyboard
 import kotlinx.android.synthetic.main.fragment_creation.*
 import timber.log.Timber
 import org.koin.android.viewmodel.ext.android.viewModel as viewModelLazily

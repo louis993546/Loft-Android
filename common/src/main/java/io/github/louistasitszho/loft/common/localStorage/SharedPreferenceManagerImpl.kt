@@ -1,4 +1,4 @@
-package io.github.louistsaitszho.loft.localStorage
+package io.github.louistasitszho.loft.common.localStorage
 
 import android.content.Context
 import android.content.SharedPreferences

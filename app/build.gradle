@@ -36,6 +36,7 @@ kotlin {
 }
 
 dependencies {
+    implementation project(path: ':common')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     def support_library_version = "27.1.1"
@@ -62,7 +63,6 @@ dependencies {
 //    implementation "android.arch.persistence.room:runtime:$room_version"
 //    kapt "android.arch.persistence.room:compiler:$room_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:0.30.2"
-
 //    TODO It's androidx
 //    implementation 'androidx.core:core-ktx:1.0.0'
 

@@ -1,4 +1,4 @@
-package io.github.louistsaitszho.loft.localStorage
+package io.github.louistasitszho.loft.common.localStorage
 
 interface SharedPreferenceManager {
     fun isSignedIn(): Boolean

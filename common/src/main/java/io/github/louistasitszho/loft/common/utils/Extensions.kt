@@ -1,6 +1,6 @@
 @file:Suppress("NOTHING_TO_INLINE")
 
-package io.github.louistsaitszho.loft.utils
+package io.github.louistasitszho.loft.common.utils
 
 import android.content.Context
 import android.support.v4.app.Fragment
