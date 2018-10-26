@@ -1,4 +1,4 @@
-package io.github.louistsaitszho.loft.temporary
+package io.github.louistsaitszho.test.temporary
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
