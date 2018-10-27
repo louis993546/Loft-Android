@@ -43,7 +43,7 @@ class CreationFragment : ScopedFragment() {
                     yourName = edit_text_your_name.getInputText()
             )
         }
-        edit_text_your_name.setOnEditorActionListener { v, actionId, event ->
+        edit_text_your_name.setOnEditorActionListener { _, actionId, event ->
             Timber.d("your name action triggered: $actionId, $event")
             true
         }
