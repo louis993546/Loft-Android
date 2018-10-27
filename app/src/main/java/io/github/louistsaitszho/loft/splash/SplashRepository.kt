@@ -1,5 +1,5 @@
 package io.github.louistsaitszho.loft.splash
 
 interface SplashRepository {
-    fun isSignedIn(): Boolean
+    suspend fun isSignedIn(): Boolean
 }

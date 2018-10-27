@@ -14,12 +14,12 @@ class SharedPreferenceManagerImpl(private val context: Context) : SharedPreferen
         context.getSharedPreferences(PREFERENCE_ID, Context.MODE_PRIVATE)
     }
 
-    override fun isSignedIn(): Boolean = sharedPreference.contains(KEY_TOKEN)
+    override suspend fun isSignedIn(): Boolean = sharedPreference.contains(KEY_TOKEN)
 
     @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
-    override fun getToken(): String = sharedPreference.getString(KEY_TOKEN, "")
+    override suspend fun getToken(): String = sharedPreference.getString(KEY_TOKEN, "")
 
-    override fun storeToken(token: String) {
+    override suspend fun storeToken(token: String) {
         sharedPreference.edit().putString(KEY_TOKEN, token).apply()
     }
 }

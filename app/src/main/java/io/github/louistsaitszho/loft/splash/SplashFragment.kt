@@ -1,37 +1,42 @@
 package io.github.louistsaitszho.loft.splash
 
+import android.arch.lifecycle.Observer
 import android.os.Bundle
 import android.os.Handler
+import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import io.github.louistsaitszho.loft.R
-import io.github.louistsaitszho.loft.ScopedFragment
-import kotlinx.coroutines.experimental.Dispatchers
-import kotlinx.coroutines.experimental.async
-import kotlinx.coroutines.experimental.launch
-import kotlinx.coroutines.experimental.withContext
 import org.koin.android.viewmodel.ext.android.viewModel as viewModelLazily
 
-class SplashFragment : ScopedFragment() {
+class SplashFragment : Fragment() {
 
     private val viewModel: SplashViewModel by viewModelLazily()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_splash, container, false)
+        val view = inflater.inflate(R.layout.fragment_splash, container, false)
+        observeViewModels()
+        return view
     }
 
-    override fun onStart() {
-        super.onStart()
-        //TODO move coroutine to viewmodel?
-        launch {
-            val isSignedIn = async(Dispatchers.IO) { viewModel.isSignedIn() }
-            val navigationAction = if (isSignedIn.await()) R.id.action_splashFragment_to_mainFragment
-            else R.id.action_splashFragment_to_whatIsLoftFragment
-            withContext(Dispatchers.Main) { navigateToNextWithDelay(action = navigationAction) }
-        }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.findNextScene()
+    }
+
+    private fun observeViewModels() {
+        viewModel.sceneAfterSplash.observe(this, Observer {
+            when (it) {
+                SplashViewModel.SceneAfterSplash.ONBOARDING ->
+                    navigateToNextWithDelay(R.id.action_splashFragment_to_whatIsLoftFragment)
+                SplashViewModel.SceneAfterSplash.MAIN ->
+                    navigateToNextWithDelay(R.id.action_splashFragment_to_mainFragment)
+                null -> TODO()
+            }
+        })
     }
 
     private fun navigateToNextWithDelay(action: Int, delayMills: Long = 2000) {
