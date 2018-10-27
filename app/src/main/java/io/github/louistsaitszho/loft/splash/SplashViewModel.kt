@@ -1,7 +1,7 @@
 package io.github.louistsaitszho.loft.splash
 
-import android.arch.lifecycle.ViewModel
+import io.github.louistsaitszho.loft.ScopedViewModel
 
-class SplashViewModel(private val repository: SplashRepository) : ViewModel() {
+class SplashViewModel(private val repository: SplashRepository) : ScopedViewModel() {
     fun isSignedIn(): Boolean = repository.isSignedIn()
 }
