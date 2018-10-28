@@ -1,9 +1,9 @@
 package io.github.louistsaitszho.loft.splash
 
-import io.github.louistasitszho.loft.common.localStorage.SharedPreferenceManager
+import io.github.louistasitszho.loft.common.keyValueStore.KeyValueStore
 
 class SplashRepositoryImpl(
-        private val sharedPreference: SharedPreferenceManager
+        private val sharedPreference: KeyValueStore
 ) : SplashRepository {
 
     override suspend fun isSignedIn() = sharedPreference.isSignedIn()

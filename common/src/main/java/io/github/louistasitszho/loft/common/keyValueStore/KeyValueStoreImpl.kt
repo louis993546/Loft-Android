@@ -1,9 +1,12 @@
-package io.github.louistasitszho.loft.common.localStorage
+package io.github.louistasitszho.loft.common.keyValueStore
 
 import android.content.Context
 import android.content.SharedPreferences
 
-class SharedPreferenceManagerImpl(private val context: Context) : SharedPreferenceManager {
+/**
+ * Implementation of Key-Value store, powered by SharedPreference
+ */
+class KeyValueStoreImpl(private val context: Context) : KeyValueStore {
 
     companion object {
         const val PREFERENCE_ID = "loft"

@@ -3,8 +3,8 @@ package io.github.louistsaitszho.loft
 import android.app.Application
 import android.os.StrictMode
 import com.jakewharton.threetenabp.AndroidThreeTen
-import io.github.louistasitszho.loft.common.localStorage.SharedPreferenceManager
-import io.github.louistasitszho.loft.common.localStorage.SharedPreferenceManagerImpl
+import io.github.louistasitszho.loft.common.keyValueStore.KeyValueStore
+import io.github.louistasitszho.loft.common.keyValueStore.KeyValueStoreImpl
 import io.github.louistasitszho.loft.common.network.API
 import io.github.louistasitszho.loft.common.network.APIImpl
 import io.github.louistsaitszho.loft.creation.CreationRepository
@@ -57,7 +57,7 @@ class App : Application() {
 }
 
 val appModule = module {
-    single<SharedPreferenceManager> { SharedPreferenceManagerImpl(androidApplication()) }
+    single<KeyValueStore> { KeyValueStoreImpl(androidApplication()) }
     single<API> { APIImpl() }
 
     single<MainRepository> { MainRepositoryImpl() }
