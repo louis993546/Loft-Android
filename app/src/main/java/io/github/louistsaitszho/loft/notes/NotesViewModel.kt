@@ -1,5 +1,5 @@
 package io.github.louistsaitszho.loft.notes
 
-import android.arch.lifecycle.ViewModel
+import io.github.louistsaitszho.loft.ScopedViewModel
 
-class NotesViewModel(val repository: NotesRepository) : ViewModel()
+class NotesViewModel(val repository: NotesRepository) : ScopedViewModel()

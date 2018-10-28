@@ -12,11 +12,10 @@ class SplashViewModel(private val repository: SplashRepository) : ScopedViewMode
 
     fun findNextScene() {
         launch {
-            if (repository.isSignedIn()) {
-                _sceneAfterSplash.postValue(SceneAfterSplash.MAIN)
-            } else {
-                _sceneAfterSplash.postValue(SceneAfterSplash.ONBOARDING)
-            }
+            _sceneAfterSplash.postValue(when (repository.isSignedIn()) {
+                true -> SceneAfterSplash.MAIN
+                false -> SceneAfterSplash.ONBOARDING
+            })
         }
     }
 

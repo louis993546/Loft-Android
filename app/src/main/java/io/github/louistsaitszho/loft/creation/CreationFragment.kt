@@ -2,6 +2,7 @@ package io.github.louistsaitszho.loft.creation
 
 import android.arch.lifecycle.Observer
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,12 +10,11 @@ import io.github.louistasitszho.loft.common.utils.getInputText
 import io.github.louistasitszho.loft.common.utils.hideSoftKeyboard
 import io.github.louistasitszho.loft.common.utils.showSoftKeyboard
 import io.github.louistsaitszho.loft.R
-import io.github.louistsaitszho.loft.ScopedFragment
 import kotlinx.android.synthetic.main.fragment_creation.*
 import timber.log.Timber
 import org.koin.android.viewmodel.ext.android.viewModel as viewModelLazily
 
-class CreationFragment : ScopedFragment() {
+class CreationFragment : Fragment() {
 
     private val viewModel: CreationViewModel by viewModelLazily()
 
