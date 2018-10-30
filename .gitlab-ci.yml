@@ -28,9 +28,6 @@ lint:
   stage: verification
   script:
   - ./gradlew lint
-  artifacts:
-    paths:
-    - app/lint/outputs/
 
 debugBuild:
   stage: build
@@ -44,6 +41,3 @@ unitTest:
   stage: verification
   script:
   - ./gradlew test
-  artifacts:
-    paths:
-    - app/test/outputs/
