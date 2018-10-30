@@ -21,12 +21,24 @@ before_script:
 - chmod +x ./gradlew
 
 stages:
+- lint
 - build
+- test
 
-build:
+lint:
+  stage: lint
+  script:
+  - ./gradlew lint
+
+debugBuild:
   stage: build
   script:
   - ./gradlew assembleDebug
   artifacts:
     paths:
     - app/build/outputs/
+
+unitTest:
+  stage: test
+  script:
+  - ./gradlew test
