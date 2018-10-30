@@ -1,17 +1,44 @@
 package io.github.louistsaitszho.loft.creation
 
+import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
+import io.github.louistsaitszho.loft.ScopedViewModel
+import kotlinx.coroutines.experimental.Dispatchers
+import kotlinx.coroutines.experimental.launch
 
-class CreationViewModel(private val repository: CreationRepository) : ViewModel() {
-    val keyboardUp = MutableLiveData<Boolean>()
+class CreationViewModel(private val repository: CreationRepository) : ScopedViewModel() {
+    private val _keyboardUp = MutableLiveData<Boolean>()
+    val keyboardUp: LiveData<Boolean>
+        get() = _keyboardUp
+
+    private val _formError = MutableLiveData<CreationFormError>()
+    val formError: LiveData<CreationFormError>
+        get() = _formError
 
     fun createLoft(loftName: String, yourName: String) {
-        if (loftName.isBlank()) throw IllegalArgumentException("Loft name cannot be blank")
-        if (yourName.isBlank()) throw IllegalArgumentException("Your name cannot be blank")
+        var hasError = false
+        if (loftName.isBlank()) {
+            _formError.postValue(CreationFormError.BLANK_LOFT_NAME)
+            hasError = true
+        }
+        if (yourName.isBlank()) {
+            _formError.postValue(CreationFormError.BLANK_USER_NAME)
+            hasError = true
+        }
 
-        keyboardUp.postValue(false)
+        if (!hasError) {
+            _formError.postValue(null)
+            _keyboardUp.postValue(false)
 
-        repository.createLoftAndUser(loftName, yourName)    //TODO return type not confirmed yet
+            launch(Dispatchers.IO) {
+                repository.createLoftAndUser(loftName, yourName)    //TODO return type not confirmed yet
+                //TODO trigger view to go to main if it's successful
+            }
+        }
+    }
+
+    enum class CreationFormError {
+        BLANK_LOFT_NAME,
+        BLANK_USER_NAME
     }
 }

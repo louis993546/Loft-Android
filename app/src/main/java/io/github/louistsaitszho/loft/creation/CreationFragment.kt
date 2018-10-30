@@ -26,10 +26,21 @@ class CreationFragment : Fragment() {
     }
 
     private fun subscribeToAllLiveData() {
+        //TODO use view lifecycle owner when I got androidx
         viewModel.keyboardUp.observe(this, Observer { up ->
             when (up) {
                 true -> showSoftKeyboard()
                 false -> hideSoftKeyboard()
+            }
+        })
+        viewModel.formError.observe(this, Observer {
+            when (it) {
+                CreationViewModel.CreationFormError.BLANK_LOFT_NAME -> edit_text_loft_name.error = ""
+                CreationViewModel.CreationFormError.BLANK_USER_NAME -> edit_text_your_name.error = ""
+                null -> {
+                    edit_text_loft_name.error = null
+                    edit_text_your_name.error = null
+                }
             }
         })
     }

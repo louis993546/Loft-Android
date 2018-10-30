@@ -9,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import io.github.louistsaitszho.loft.R
+import io.github.louistsaitszho.loft.splash.SplashViewModel.SceneAfterSplash.MAIN
+import io.github.louistsaitszho.loft.splash.SplashViewModel.SceneAfterSplash.ONBOARDING
 import org.koin.android.viewmodel.ext.android.viewModel as viewModelLazily
 
 class SplashFragment : Fragment() {
@@ -30,9 +32,9 @@ class SplashFragment : Fragment() {
     private fun observeViewModels() {
         viewModel.sceneAfterSplash.observe(this, Observer {
             when (it) {
-                SplashViewModel.SceneAfterSplash.ONBOARDING ->
+                ONBOARDING ->
                     navigateToNextWithDelay(R.id.action_splashFragment_to_whatIsLoftFragment)
-                SplashViewModel.SceneAfterSplash.MAIN ->
+                MAIN ->
                     navigateToNextWithDelay(R.id.action_splashFragment_to_mainFragment)
                 null -> TODO()
             }
