@@ -29,6 +29,9 @@ lint:
   stage: lint
   script:
   - ./gradlew lint
+  artifacts:
+    paths:
+    - app/lint/outputs/
 
 debugBuild:
   stage: build
@@ -42,3 +45,6 @@ unitTest:
   stage: test
   script:
   - ./gradlew test
+  artifacts:
+    paths:
+    - app/test/outputs/
