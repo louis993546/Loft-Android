@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import io.github.louistsaitszho.loft.R
 import io.github.louistsaitszho.loft.notes.NotesFragment
-import io.github.louistsaitszho.test.temporary.ConstructionFragment
+import io.github.louistsaitszho.loft.temporary.ConstructionFragment
 
 class MainPagerAdapter(
         fragmentManager: FragmentManager,
