@@ -21,12 +21,11 @@ before_script:
 - chmod +x ./gradlew
 
 stages:
-- lint
+- verification
 - build
-- test
 
 lint:
-  stage: lint
+  stage: verification
   script:
   - ./gradlew lint
   artifacts:
@@ -42,7 +41,7 @@ debugBuild:
     - app/build/outputs/
 
 unitTest:
-  stage: test
+  stage: verification
   script:
   - ./gradlew test
   artifacts:
