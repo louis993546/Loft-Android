@@ -35,8 +35,10 @@ class CreationFragment : Fragment() {
         })
         viewModel.formError.observe(this, Observer {
             when (it) {
-                CreationViewModel.CreationFormError.BLANK_LOFT_NAME -> edit_text_loft_name.error = ""
-                CreationViewModel.CreationFormError.BLANK_USER_NAME -> edit_text_your_name.error = ""
+                CreationViewModel.CreationFormError.BLANK_LOFT_NAME ->
+                    edit_text_loft_name.error = "Loft name cannot be blank"
+                CreationViewModel.CreationFormError.BLANK_USER_NAME ->
+                    edit_text_your_name.error = "Your name cannot be blank"
                 null -> {
                     edit_text_loft_name.error = null
                     edit_text_your_name.error = null

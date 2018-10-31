@@ -3,8 +3,8 @@ package io.github.louistsaitszho.loft.creation
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import io.github.louistsaitszho.loft.ScopedViewModel
-import kotlinx.coroutines.experimental.Dispatchers
-import kotlinx.coroutines.experimental.launch
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class CreationViewModel(private val repository: CreationRepository) : ScopedViewModel() {
     private val _keyboardUp = MutableLiveData<Boolean>()
