@@ -1,4 +1,4 @@
-package io.github.louistasitszho.loft.common
+package io.github.louistsaitszho.loft.common
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

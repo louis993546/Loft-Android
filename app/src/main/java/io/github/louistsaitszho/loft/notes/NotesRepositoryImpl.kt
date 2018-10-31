@@ -1,6 +1,6 @@
 package io.github.louistsaitszho.loft.notes
 
-import io.github.louistasitszho.loft.common.network.API
+import io.github.louistsaitszho.loft.common.network.API
 
 class NotesRepositoryImpl(val api: API) : NotesRepository {
     override suspend fun createNote(content: String): Note {

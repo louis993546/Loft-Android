@@ -1,4 +1,4 @@
-package io.github.louistasitszho.loft.common.network
+package io.github.louistsaitszho.loft.common.network
 
 interface API {
     suspend fun createLoft(loftName: String, userName: String)

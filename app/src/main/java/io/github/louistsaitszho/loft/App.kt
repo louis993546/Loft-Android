@@ -3,7 +3,7 @@ package io.github.louistsaitszho.loft
 import android.app.Application
 import android.os.StrictMode
 import com.jakewharton.threetenabp.AndroidThreeTen
-import io.github.louistasitszho.loft.common.Module.Companion.commonModule
+import io.github.louistsaitszho.loft.common.Module.Companion.commonModule
 import io.github.louistsaitszho.loft.creation.CreationRepository
 import io.github.louistsaitszho.loft.creation.CreationRepositoryImpl
 import io.github.louistsaitszho.loft.creation.CreationViewModel

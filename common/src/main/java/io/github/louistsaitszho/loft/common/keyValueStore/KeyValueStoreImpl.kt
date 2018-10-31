@@ -1,4 +1,4 @@
-package io.github.louistasitszho.loft.common.keyValueStore
+package io.github.louistsaitszho.loft.common.keyValueStore
 
 import android.content.Context
 import android.content.SharedPreferences

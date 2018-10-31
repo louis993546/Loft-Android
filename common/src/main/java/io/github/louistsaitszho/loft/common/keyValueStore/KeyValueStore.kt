@@ -1,4 +1,4 @@
-package io.github.louistasitszho.loft.common.keyValueStore
+package io.github.louistsaitszho.loft.common.keyValueStore
 
 /**
  * Definition of what a simple key-value store should be able to do

@@ -1,4 +1,4 @@
-package io.github.louistasitszho.loft.common.network
+package io.github.louistsaitszho.loft.common.network
 
 class APIImpl : API {
     override suspend fun createLoft(loftName: String, userName: String) {
