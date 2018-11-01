@@ -2,12 +2,6 @@ package io.github.louistsaitszho.loft
 
 import android.app.Application
 import android.os.StrictMode
-import com.facebook.flipper.android.AndroidFlipperClient
-import com.facebook.flipper.android.utils.FlipperUtils
-import com.facebook.flipper.plugins.inspector.DescriptorMapping
-import com.facebook.flipper.plugins.inspector.InspectorFlipperPlugin
-import com.facebook.flipper.plugins.network.NetworkFlipperPlugin
-import com.facebook.soloader.SoLoader
 import com.jakewharton.threetenabp.AndroidThreeTen
 import io.github.louistsaitszho.loft.common.Module.Companion.commonModule
 import io.github.louistsaitszho.loft.creation.CreationRepository
@@ -59,14 +53,7 @@ class App : Application() {
     private fun getTree(): Timber.Tree = Timber.DebugTree()
 
     private fun setupFlipper() {
-        SoLoader.init(this, false)
-        if (BuildConfig.DEBUG && FlipperUtils.shouldEnableFlipper(this)) {
-            AndroidFlipperClient.getInstance(this).run {
-                addPlugin(InspectorFlipperPlugin(this@App, DescriptorMapping.withDefaults()))
-                addPlugin(NetworkFlipperPlugin())
-                start()
-            }
-        }
+        FlipperWrapperImpl().init(this)
     }
 }
 
