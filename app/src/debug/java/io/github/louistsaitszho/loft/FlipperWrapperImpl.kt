@@ -6,6 +6,7 @@ import com.facebook.flipper.plugins.inspector.DescriptorMapping
 import com.facebook.flipper.plugins.inspector.InspectorFlipperPlugin
 import com.facebook.flipper.plugins.network.NetworkFlipperPlugin
 import com.facebook.soloader.SoLoader
+import io.github.louistsaitszho.loft.utils.FlipperWrapper
 
 class FlipperWrapperImpl : FlipperWrapper {
     override fun init(app: App) {

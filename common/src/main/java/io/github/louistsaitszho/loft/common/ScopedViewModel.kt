@@ -1,4 +1,4 @@
-package io.github.louistsaitszho.loft
+package io.github.louistsaitszho.loft.common
 
 import android.arch.lifecycle.ViewModel
 import kotlinx.coroutines.CoroutineScope

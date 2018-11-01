@@ -2,7 +2,7 @@ package io.github.louistsaitszho.loft.creation
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
-import io.github.louistsaitszho.loft.ScopedViewModel
+import io.github.louistsaitszho.loft.common.ScopedViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

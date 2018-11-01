@@ -1,4 +1,6 @@
-package io.github.louistsaitszho.loft
+package io.github.louistsaitszho.loft.utils
+
+import io.github.louistsaitszho.loft.App
 
 /**
  * Since Flipper is only available in debug builds, this wrapper + allows different builds to init
