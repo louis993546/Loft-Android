@@ -1,10 +1,10 @@
-package io.github.louistsaitszho.loft.common.network
+package io.github.louistsaitszho.loft.api
 
-import io.github.louistsaitszho.loft.common.network.dto.CreateLoftResponse
-import io.github.louistsaitszho.loft.common.network.dto.NoteListResponse
-import io.github.louistsaitszho.loft.common.network.dto.RequestJoinLoftResponse
+import io.github.louistsaitszho.loft.api.dto.CreateLoftResponse
+import io.github.louistsaitszho.loft.api.dto.NoteListResponse
+import io.github.louistsaitszho.loft.api.dto.RequestJoinLoftResponse
 
-class APIImpl : API {
+class LoftApiImpl : LoftApi {
     override suspend fun createLoft(loftName: String, userName: String): CreateLoftResponse {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }

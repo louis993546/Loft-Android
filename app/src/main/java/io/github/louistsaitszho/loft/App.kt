@@ -3,6 +3,7 @@ package io.github.louistsaitszho.loft
 import android.app.Application
 import android.os.StrictMode
 import com.jakewharton.threetenabp.AndroidThreeTen
+import io.github.louistsaitszho.loft.api.Module.Companion.apiModule
 import io.github.louistsaitszho.loft.common.Module.Companion.commonModule
 import io.github.louistsaitszho.loft.creation.CreationRepository
 import io.github.louistsaitszho.loft.creation.CreationRepositoryImpl
@@ -28,7 +29,11 @@ class App : Application() {
         Timber.plant(getTree())
         AndroidThreeTen.init(this)
         setupFlipper()
-        startKoin(this, listOf(commonModule, onboardingModule, mainModule, appModule))
+        startKoin(
+                context = this,
+                modules = listOf(commonModule, apiModule, onboardingModule, mainModule, appModule),
+                logger = TimberKoinLogger()
+        )
     }
 
     private fun setupStrictMode() {

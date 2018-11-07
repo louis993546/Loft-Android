@@ -1,4 +1,4 @@
-package io.github.louistsaitszho.loft.common.network.dto
+package io.github.louistsaitszho.loft.api.dto
 
 data class CreateLoftResponse(
         val loftName: String,

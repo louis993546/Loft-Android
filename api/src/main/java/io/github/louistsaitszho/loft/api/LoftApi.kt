@@ -1,10 +1,10 @@
-package io.github.louistsaitszho.loft.common.network
+package io.github.louistsaitszho.loft.api
 
-import io.github.louistsaitszho.loft.common.network.dto.CreateLoftResponse
-import io.github.louistsaitszho.loft.common.network.dto.NoteListResponse
-import io.github.louistsaitszho.loft.common.network.dto.RequestJoinLoftResponse
+import io.github.louistsaitszho.loft.api.dto.CreateLoftResponse
+import io.github.louistsaitszho.loft.api.dto.NoteListResponse
+import io.github.louistsaitszho.loft.api.dto.RequestJoinLoftResponse
 
-interface API {
+interface LoftApi {
     suspend fun createLoft(loftName: String, userName: String): CreateLoftResponse
 
     suspend fun requestJoinLoft(loftCode: String, userName: String): RequestJoinLoftResponse
