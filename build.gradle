@@ -21,6 +21,11 @@ allprojects {
         google()
         jcenter()
     }
+    ext {
+        min_sdk_version = 21
+        target_sdk_version = 27
+        compile_sdk_version = 28
+    }
 }
 
 task clean(type: Delete) {
