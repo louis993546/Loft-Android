@@ -10,34 +10,31 @@ import io.github.louistsaitszho.loft.temporary.ConstructionFragment
 
 class MainPagerAdapter(
         fragmentManager: FragmentManager,
-        val context: Context
+        val context: Context,
+        //TODO make it public var or something to allow runtime re-ordering
+        private val pageOrder: List<Page> = listOf(Page.CHAT, Page.NOTES, Page.TO_DO, Page.SCHEDULE)
 ) : FragmentPagerAdapter(fragmentManager) {
 
-    override fun getItem(position: Int): Fragment {
-        return when (position) {
-            0 -> ConstructionFragment()
-            1 -> NotesFragment()
-            2 -> ConstructionFragment()
-            3 -> ConstructionFragment()
-            else -> throw IllegalArgumentException("There is only ${Pages.values().size} pages here")
-        }
+    override fun getItem(position: Int): Fragment = when (pageOrder[position]) {
+        Page.CHAT -> ConstructionFragment()
+        Page.NOTES -> NotesFragment()
+        Page.TO_DO -> ConstructionFragment()
+        Page.SCHEDULE -> ConstructionFragment()
     }
 
-    override fun getCount() = Pages.values().size
+    override fun getCount() = Page.values().size
 
-    override fun getPageTitle(position: Int): CharSequence? = when (position) {
-        0 -> context.getString(R.string.tab_title_chat)
-        1 -> context.getString(R.string.tab_title_notes)
-        2 -> context.getString(R.string.tab_title_to_do)
-        3 -> context.getString(R.string.tab_title_schedule)
-        else -> throw IllegalArgumentException("There is only ${Pages.values().size} pages here")
+    override fun getPageTitle(position: Int): CharSequence? = when (pageOrder[position]) {
+        Page.CHAT -> context.getString(R.string.tab_title_chat)
+        Page.NOTES -> context.getString(R.string.tab_title_notes)
+        Page.TO_DO -> context.getString(R.string.tab_title_to_do)
+        Page.SCHEDULE -> context.getString(R.string.tab_title_schedule)
     }
 }
 
-//TODO use this to add the ability to reorder stuff
-enum class Pages(val defaultPosition: Int, val titleStringRes: Int) {
-    CHAT(0, R.string.tab_title_chat),
-    NOTES(1, R.string.tab_title_notes),
-    TO_DO(2, R.string.tab_title_to_do),
-    SCHEDULE(3, R.string.tab_title_schedule)
+enum class Page {
+    CHAT,
+    NOTES,
+    TO_DO,
+    SCHEDULE
 }

@@ -36,7 +36,7 @@ class SplashFragment : Fragment() {
                     navigateToNextWithDelay(R.id.action_splashFragment_to_whatIsLoftFragment)
                 MAIN ->
                     navigateToNextWithDelay(R.id.action_splashFragment_to_mainFragment)
-                null -> TODO()
+                null -> TODO("This should not be possible, handle it when I got spare time")
             }
         })
     }

@@ -1,7 +1,15 @@
 package io.github.louistsaitszho.loft.common.network
 
-interface API {
-    suspend fun createLoft(loftName: String, userName: String)
+import io.github.louistsaitszho.loft.common.network.dto.CreateLoftResponse
+import io.github.louistsaitszho.loft.common.network.dto.NoteListResponse
+import io.github.louistsaitszho.loft.common.network.dto.RequestJoinLoftResponse
 
-    suspend fun requestJoinLoft(loftCode: String, userName: String)
+interface API {
+    suspend fun createLoft(loftName: String, userName: String): CreateLoftResponse
+
+    suspend fun requestJoinLoft(loftCode: String, userName: String): RequestJoinLoftResponse
+
+    suspend fun getNotes(): NoteListResponse
+
+//    suspend fun createNote(newNote: NewNoteRequest): NewNoteResponse
 }

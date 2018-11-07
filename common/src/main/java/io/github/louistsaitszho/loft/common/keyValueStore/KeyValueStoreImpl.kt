@@ -17,7 +17,8 @@ class KeyValueStoreImpl(private val context: Context) : KeyValueStore {
         context.getSharedPreferences(PREFERENCE_ID, Context.MODE_PRIVATE)
     }
 
-    override suspend fun isSignedIn(): Boolean = sharedPreference.contains(KEY_TOKEN)
+//    override suspend fun isSignedIn(): Boolean = sharedPreference.contains(KEY_TOKEN)
+    override suspend fun isSignedIn(): Boolean = true   //TODO for testing purpose
 
     @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
     override suspend fun getToken(): String = sharedPreference.getString(KEY_TOKEN, "")
