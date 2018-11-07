@@ -3,10 +3,15 @@ package io.github.louistsaitszho.loft.main
 import android.content.Context
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
+import android.support.v4.app.FragmentStatePagerAdapter
 import io.github.louistsaitszho.loft.R
+import io.github.louistsaitszho.loft.about.AboutFragment
+import io.github.louistsaitszho.loft.chat.ChatFragment
+import io.github.louistsaitszho.loft.members.MembersFragment
 import io.github.louistsaitszho.loft.notes.NotesFragment
-import io.github.louistsaitszho.loft.temporary.ConstructionFragment
+import io.github.louistsaitszho.loft.pages.PagesFragment
+import io.github.louistsaitszho.loft.schedule.ScheduleFragment
+import io.github.louistsaitszho.loft.tasks.TasksFragment
 
 class MainPagerAdapter(
         fragmentManager: FragmentManager,
@@ -21,16 +26,16 @@ class MainPagerAdapter(
                 Page.ADD,
                 Page.ABOUT
         )
-) : FragmentPagerAdapter(fragmentManager) {
+) : FragmentStatePagerAdapter(fragmentManager) {
 
     override fun getItem(position: Int): Fragment = when (pageOrder[position]) {
-        Page.CHAT -> ConstructionFragment()
+        Page.CHAT -> ChatFragment()
         Page.NOTE -> NotesFragment()
-        Page.TO_DO -> ConstructionFragment()
-        Page.SCHEDULE -> ConstructionFragment()
-        Page.MEMBER -> ConstructionFragment()
-        Page.ADD -> ConstructionFragment()
-        Page.ABOUT -> ConstructionFragment()
+        Page.TO_DO -> TasksFragment()
+        Page.SCHEDULE -> ScheduleFragment()
+        Page.MEMBER -> MembersFragment()
+        Page.ADD -> PagesFragment()
+        Page.ABOUT -> AboutFragment()
     }
 
     override fun getCount() = Page.values().size
