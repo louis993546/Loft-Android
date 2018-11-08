@@ -9,12 +9,10 @@ import androidx.navigation.findNavController
  * Navigation AAC, and this is the activity that hosts all of them.
  */
 class TheMostImportantActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_the_most_important)
     }
 
     override fun onSupportNavigateUp() = findNavController(R.id.nav_host_fragment).navigateUp()
-
 }
