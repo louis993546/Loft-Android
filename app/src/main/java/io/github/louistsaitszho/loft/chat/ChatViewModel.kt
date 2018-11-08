@@ -7,7 +7,7 @@ import io.github.louistsaitszho.loft.common.model.Message
 import io.github.louistsaitszho.loft.common.utils.addItem
 import java.util.*
 
-class ChatViewModel : ScopedViewModel() {
+class ChatViewModel(val repository: ChatRepository) : ScopedViewModel() {
     //TODO some kind of reversed paged list: 1 private(MLD), 1 public(LD)
     private val _conversation: MutableLiveData<List<Message>> = MutableLiveData()
     val conversationLiveData: LiveData<List<Message>>
@@ -15,6 +15,10 @@ class ChatViewModel : ScopedViewModel() {
 
     fun send(text: String) {
         _conversation.addItem(Message(UUID.randomUUID(), text))
+    }
+
+    fun triggerTempDataFetch() {
+        _conversation.postValue(repository.getMockMessages())
     }
 
     //TODO send image, video, attachment, etc
