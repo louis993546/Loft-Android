@@ -1,4 +1,7 @@
 package io.github.louistsaitszho.loft.api.dto
 
-//TODO page number vs offset + limit vs cursor
+import com.squareup.moshi.JsonClass
+
+//TODO cursor
+@JsonClass(generateAdapter = true)
 data class NoteListResponse(val noteList: List<NoteResponse>)

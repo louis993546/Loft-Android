@@ -31,7 +31,6 @@ class App : Application() {
         setupStrictMode()
         Timber.plant(getTree())
         AndroidThreeTen.init(this)
-        setupFlipper()
         startKoin(
                 context = this,
                 modules = listOf(commonModule, apiModule, onboardingModule, mainModule, appModule),
@@ -59,10 +58,6 @@ class App : Application() {
 
     //TODO get the appropriate tree accordingly
     private fun getTree(): Timber.Tree = Timber.DebugTree()
-
-    private fun setupFlipper() {
-        FlipperWrapperImpl().init(this)
-    }
 }
 
 /**

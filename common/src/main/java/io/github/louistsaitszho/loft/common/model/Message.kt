@@ -4,6 +4,6 @@ import java.util.*
 
 data class Message(
         val id: UUID,
-        val message: String
-        //TODO from who (Member or Member::ID?)
+        val message: String,
+        val sender: Member
 )

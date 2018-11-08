@@ -13,17 +13,16 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:resizeableActivity="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".TheMostImportantActivity">
+        <activity
+            android:name=".TheMostImportantActivity"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name="com.facebook.flipper.android.diagnostics.FlipperDiagnosticActivity"
-            android:exported="true" />
     </application>
 
 </manifest>
