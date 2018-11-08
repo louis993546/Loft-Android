@@ -41,7 +41,7 @@ class SplashFragment : Fragment() {
         })
     }
 
-    private fun navigateToNextWithDelay(action: Int, delayMills: Long = 2000) {
+    private fun navigateToNextWithDelay(action: Int, delayMills: Long = 1000) {
         val delayHandler = Handler()
         delayHandler.postDelayed({ findNavController().navigate(action) }, delayMills)
     }

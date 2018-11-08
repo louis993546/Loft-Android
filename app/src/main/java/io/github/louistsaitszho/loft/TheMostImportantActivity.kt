@@ -7,6 +7,9 @@ import androidx.navigation.findNavController
 /**
  * This is the one and only activity in the app. Everything lives on Fragments, navigation via the
  * Navigation AAC, and this is the activity that hosts all of them.
+ *
+ * Other notes:
+ * - I don't think I need to care about onSaveInstanceState here (at least for now)
  */
 class TheMostImportantActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
