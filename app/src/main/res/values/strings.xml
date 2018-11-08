@@ -10,6 +10,5 @@
     <string name="loft_name_hint">Loft name</string>
     <string name="your_name_hint">Your name</string>
     <string name="tab_title_members">Members</string>
-    <string name="tab_title_add">Add</string>
-    <string name="tab_title_about">About</string>
+    <string name="tab_title_more">More</string>
 </resources>
