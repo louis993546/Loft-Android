@@ -4,6 +4,7 @@ import android.app.Application
 import android.os.StrictMode
 import com.jakewharton.threetenabp.AndroidThreeTen
 import io.github.louistsaitszho.loft.api.Module.Companion.apiModule
+import io.github.louistsaitszho.loft.chat.ChatViewModel
 import io.github.louistsaitszho.loft.common.Module.Companion.commonModule
 import io.github.louistsaitszho.loft.creation.CreationRepository
 import io.github.louistsaitszho.loft.creation.CreationRepositoryImpl
@@ -82,6 +83,7 @@ val mainModule = module {
     single<NotesRepository> { NotesRepositoryImpl(api = get()) }
 
     viewModel { NotesViewModel(repository = get()) }
+    viewModel { ChatViewModel() }
 }
 
 /**
