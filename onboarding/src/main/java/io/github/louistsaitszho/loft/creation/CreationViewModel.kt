@@ -7,30 +7,30 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class CreationViewModel(private val repository: CreationRepository) : ScopedViewModel() {
-    //TODO change it to keyboard up + which editText should get focus
-    private val _keyboardUp = MutableLiveData<Boolean>()
-    val keyboardUp: LiveData<Boolean>
-        get() = _keyboardUp
+    private val _keyboardFocusLiveData = MutableLiveData<KeyboardFocus>()
+    val keyboardFocusLiveData: LiveData<KeyboardFocus>
+        get() = _keyboardFocusLiveData
 
-    private val _formError = MutableLiveData<CreationFormError>()
-    val formError: LiveData<CreationFormError>
-        get() = _formError
+    private val _formErrorLiveData = MutableLiveData<CreationFormError>()
+    val formErrorLiveData: LiveData<CreationFormError>
+        get() = _formErrorLiveData
 
     fun createLoft(loftName: String, yourName: String) {
-        var hasError = false
+        var formError: CreationFormError? = null
+        var keyboardFocus: KeyboardFocus? = null
+
         if (loftName.isBlank()) {
-            _formError.postValue(CreationFormError.BLANK_LOFT_NAME)
-            hasError = true
-        }
-        if (yourName.isBlank()) {
-            _formError.postValue(CreationFormError.BLANK_USER_NAME)
-            hasError = true
+            formError = CreationFormError.BLANK_LOFT_NAME
+            keyboardFocus = KeyboardFocus.LOFT_NAME
+        } else if (yourName.isBlank()) {
+            formError = CreationFormError.BLANK_USER_NAME
+            keyboardFocus = KeyboardFocus.USER_NAME
         }
 
-        if (!hasError) {
-            _formError.postValue(null)
-            _keyboardUp.postValue(false)
+        _keyboardFocusLiveData.postValue(keyboardFocus)
+        _formErrorLiveData.postValue(formError)
 
+        if (formError == null) {
             launch(Dispatchers.IO) {
                 repository.createLoftAndUser(loftName, yourName)    //TODO return type not confirmed yet
                 //TODO trigger view to go to main if it's successful
@@ -41,5 +41,10 @@ class CreationViewModel(private val repository: CreationRepository) : ScopedView
     enum class CreationFormError {
         BLANK_LOFT_NAME,
         BLANK_USER_NAME
+    }
+
+    enum class KeyboardFocus {
+        LOFT_NAME,
+        USER_NAME
     }
 }

@@ -6,6 +6,7 @@ import android.arch.lifecycle.MutableLiveData
 import android.content.Context
 import android.support.v4.app.Fragment
 import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import android.widget.TextView
 
 /**
@@ -16,9 +17,17 @@ import android.widget.TextView
 
 inline fun TextView.getInputText(): String = this.text.toString()
 
-inline fun Fragment.showSoftKeyboard() {
-    (this.requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
-            .showSoftInput(this.view, InputMethodManager.SHOW_IMPLICIT)
+/**
+ * Show keyboard + focus on that edit text. Exactly as the name suggest
+ * @receiver is the EditText that you want to focus on
+ * @param fragment is needed to get the activity to get system service to access keyboard -_-
+ */
+inline fun EditText.showSoftKeyboardAndFocus(fragment: Fragment) {
+    if (this.requestFocus()) {
+        (fragment.requireActivity()
+                .getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
+                .showSoftInput(this, InputMethodManager.SHOW_IMPLICIT)
+    }
 }
 
 inline fun Fragment.hideSoftKeyboard() {

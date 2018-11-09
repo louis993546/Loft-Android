@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import io.github.louistsaitszho.loft.common.utils.getInputText
 import io.github.louistsaitszho.loft.common.utils.hideSoftKeyboard
-import io.github.louistsaitszho.loft.common.utils.showSoftKeyboard
+import io.github.louistsaitszho.loft.common.utils.showSoftKeyboardAndFocus
 import io.github.louistsaitszho.loft.whatIsLoft.R
 import kotlinx.android.synthetic.main.fragment_creation.*
 import org.koin.android.viewmodel.ext.android.viewModel as viewModelLazily
@@ -26,23 +26,21 @@ class CreationFragment : Fragment() {
     }
 
     private fun subscribeToAllLiveData() {
-        //TODO use view lifecycle owner when I got androidx
-        viewModel.keyboardUp.observe(this, Observer { up ->
-            when (up) {
-                true -> showSoftKeyboard()
-                false -> hideSoftKeyboard()
+        viewModel.keyboardFocusLiveData.observe(this, Observer { keyboardFocus ->
+            when (keyboardFocus) {
+                CreationViewModel.KeyboardFocus.LOFT_NAME ->
+                    edit_text_loft_name.showSoftKeyboardAndFocus(this)
+                CreationViewModel.KeyboardFocus.USER_NAME ->
+                    edit_text_your_name.showSoftKeyboardAndFocus(this)
+                null -> hideSoftKeyboard()
             }
         })
-        viewModel.formError.observe(this, Observer {
+        viewModel.formErrorLiveData.observe(this, Observer {
             when (it) {
-                CreationViewModel.CreationFormError.BLANK_LOFT_NAME -> {
+                CreationViewModel.CreationFormError.BLANK_LOFT_NAME ->
                     edit_text_loft_name.error = "Loft name cannot be blank"
-                    edit_text_loft_name.requestFocus()  //TODO temp
-                }
-                CreationViewModel.CreationFormError.BLANK_USER_NAME -> {
+                CreationViewModel.CreationFormError.BLANK_USER_NAME ->
                     edit_text_your_name.error = "Your name cannot be blank"
-                    edit_text_your_name.requestFocus()  //TODO temp
-                }
                 null -> {
                     edit_text_loft_name.error = null
                     edit_text_your_name.error = null
