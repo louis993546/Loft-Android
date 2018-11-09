@@ -29,9 +29,9 @@ class CreationFragment : Fragment() {
         viewModel.keyboardFocusLiveData.observe(this, Observer { keyboardFocus ->
             when (keyboardFocus) {
                 CreationViewModel.KeyboardFocus.LOFT_NAME ->
-                    edit_text_loft_name.showSoftKeyboardAndFocus(this)
+                    edit_text_loft_name.showSoftKeyboardAndFocus()
                 CreationViewModel.KeyboardFocus.USER_NAME ->
-                    edit_text_your_name.showSoftKeyboardAndFocus(this)
+                    edit_text_your_name.showSoftKeyboardAndFocus()
                 null -> hideSoftKeyboard()
             }
         })
