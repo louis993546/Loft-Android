@@ -1,1 +1,1 @@
-include ':app', ':common', ':api'
+include ':app', ':common', ':api', ':onboarding'

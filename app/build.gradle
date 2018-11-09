@@ -36,9 +36,8 @@ androidExtensions {
 dependencies {
     implementation project(path: ':common')
     implementation project(path: ':api')
+    implementation project(path: ':onboarding')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    //noinspection GradleDependency,GradleCompatible
-    implementation "com.android.support:design:$support_library_version"
     //noinspection GradleDependency,GradleCompatible
     implementation "com.android.support:support-v4:$support_library_version"
     def navigation_version = "1.0.0-alpha07"
