@@ -56,6 +56,7 @@ dependencies {
     implementation "android.arch.lifecycle:common-java8:$lifecycle_version"
     testImplementation "android.arch.core:core-testing:$lifecycle_version"
     def paging_version = "1.0.0"
+    //noinspection GradleDependency
     implementation "android.arch.paging:runtime:$paging_version"
     testImplementation "android.arch.paging:common:$paging_version"
 }

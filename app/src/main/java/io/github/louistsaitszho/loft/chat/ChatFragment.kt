@@ -7,12 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import io.github.louistsaitszho.loft.R
+import io.github.louistsaitszho.loft.common.utils.hideSoftKeyboard
 import kotlinx.android.synthetic.main.fragment_chat.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 /**
  * TODO use DiffUtil
- * TODO use Paging
  */
 class ChatFragment : Fragment() {
     private val vm: ChatViewModel by viewModel()
@@ -28,5 +28,8 @@ class ChatFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         recycler_view_chat.adapter = chatPagedAdapter
         recycler_view_chat.layoutManager = layoutManager
+        edit_text_message.setOnFocusChangeListener { _, hasFocus ->
+            if (!hasFocus) hideSoftKeyboard()
+        }
     }
 }
