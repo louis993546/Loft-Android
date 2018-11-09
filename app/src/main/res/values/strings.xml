@@ -4,8 +4,6 @@
     <string name="tab_title_notes">Notes</string>
     <string name="tab_title_to_do">To-do</string>
     <string name="tab_title_schedule">Schedule</string>
-    <string name="loft_name_hint">Loft name</string>
-    <string name="your_name_hint">Your name</string>
     <string name="tab_title_members">Members</string>
     <string name="tab_title_more">More</string>
 </resources>

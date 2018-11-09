@@ -3,15 +3,12 @@ package io.github.louistsaitszho.loft
 import android.app.Application
 import android.os.StrictMode
 import com.jakewharton.threetenabp.AndroidThreeTen
+import io.github.louistsaitszho.loft.Module.Companion.onboardingModule
 import io.github.louistsaitszho.loft.api.Module.Companion.apiModule
 import io.github.louistsaitszho.loft.chat.ChatRepository
 import io.github.louistsaitszho.loft.chat.ChatRepositoryImpl
 import io.github.louistsaitszho.loft.chat.ChatViewModel
 import io.github.louistsaitszho.loft.common.Module.Companion.commonModule
-import io.github.louistsaitszho.loft.creation.CreationRepository
-import io.github.louistsaitszho.loft.creation.CreationRepositoryImpl
-import io.github.louistsaitszho.loft.creation.CreationViewModel
-import io.github.louistsaitszho.loft.joining.JoiningViewModel
 import io.github.louistsaitszho.loft.main.MainRepository
 import io.github.louistsaitszho.loft.main.MainRepositoryImpl
 import io.github.louistsaitszho.loft.notes.NotesRepository
@@ -58,17 +55,6 @@ class App : Application() {
 
     //TODO get the appropriate tree accordingly
     private fun getTree(): Timber.Tree = Timber.DebugTree()
-}
-
-/**
- * For the onboarding module
- * TODO move it to right app module once it has been modularize
- */
-val onboardingModule = module {
-    single<CreationRepository> { CreationRepositoryImpl(api = get()) }
-
-    viewModel { JoiningViewModel() }
-    viewModel { CreationViewModel(repository = get()) }
 }
 
 /**
