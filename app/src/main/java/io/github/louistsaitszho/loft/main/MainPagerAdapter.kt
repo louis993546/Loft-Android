@@ -10,7 +10,7 @@ import io.github.louistsaitszho.loft.members.MembersFragment
 import io.github.louistsaitszho.loft.more.MoreFragment
 import io.github.louistsaitszho.loft.notes.NotesFragment
 import io.github.louistsaitszho.loft.schedule.ScheduleFragment
-import io.github.louistsaitszho.loft.tasks.ToDoFragment
+import io.github.louistsaitszho.loft.tasks.TasksFragment
 
 class MainPagerAdapter(
         fragmentManager: FragmentManager,
@@ -29,7 +29,7 @@ class MainPagerAdapter(
     override fun getItem(position: Int): Fragment = when (pageOrder[position]) {
         Page.CHAT -> ChatFragment()
         Page.NOTE -> NotesFragment()
-        Page.TO_DO -> ToDoFragment()
+        Page.TO_DO -> TasksFragment()
         Page.SCHEDULE -> ScheduleFragment()
         Page.MEMBER -> MembersFragment()
         Page.MORE -> MoreFragment()
