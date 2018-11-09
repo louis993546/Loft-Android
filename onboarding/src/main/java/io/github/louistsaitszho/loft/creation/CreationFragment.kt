@@ -6,12 +6,12 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import io.github.louistsaitszho.loft.common.utils.getInputText
 import io.github.louistsaitszho.loft.common.utils.hideSoftKeyboard
 import io.github.louistsaitszho.loft.common.utils.showSoftKeyboard
 import io.github.louistsaitszho.loft.onboarding.R
 import kotlinx.android.synthetic.main.fragment_creation.*
-import timber.log.Timber
 import org.koin.android.viewmodel.ext.android.viewModel as viewModelLazily
 
 class CreationFragment : Fragment() {
@@ -35,10 +35,14 @@ class CreationFragment : Fragment() {
         })
         viewModel.formError.observe(this, Observer {
             when (it) {
-                CreationViewModel.CreationFormError.BLANK_LOFT_NAME ->
+                CreationViewModel.CreationFormError.BLANK_LOFT_NAME -> {
                     edit_text_loft_name.error = "Loft name cannot be blank"
-                CreationViewModel.CreationFormError.BLANK_USER_NAME ->
+                    edit_text_loft_name.requestFocus()  //TODO temp
+                }
+                CreationViewModel.CreationFormError.BLANK_USER_NAME -> {
                     edit_text_your_name.error = "Your name cannot be blank"
+                    edit_text_your_name.requestFocus()  //TODO temp
+                }
                 null -> {
                     edit_text_loft_name.error = null
                     edit_text_your_name.error = null
@@ -50,15 +54,16 @@ class CreationFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         fab_create_loft_confirm.setOnClickListener {
-            Timber.d("fab create loft clicked")
             viewModel.createLoft(
                     loftName = edit_text_loft_name.getInputText(),
                     yourName = edit_text_your_name.getInputText()
             )
         }
-        edit_text_your_name.setOnEditorActionListener { _, actionId, event ->
-            Timber.d("your name action triggered: $actionId, $event")
-            true
+        edit_text_your_name.setOnEditorActionListener { _, actionId, _ ->
+            when (actionId) {
+                EditorInfo.IME_ACTION_SEND -> fab_create_loft_confirm.performClick()
+                else -> false
+            }
         }
     }
 }

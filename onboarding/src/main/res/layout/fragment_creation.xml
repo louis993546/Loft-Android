@@ -64,7 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/your_name_hint"
-            android:imeOptions="actionGo"
+            android:imeOptions="actionSend"
             android:inputType="textAutoCorrect"
             tools:text="Sth else" />
 

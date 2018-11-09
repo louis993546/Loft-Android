@@ -6,5 +6,5 @@
 
 ## Useful resources
 
-- [How to build](https://github.com/louistsaitszho/Loft-Android/blob/master/Build.md)
-- [Architecture & Structure]()
+- [How to build](Build.md)
+- [Architecture & Structure](docs/Structure.md)

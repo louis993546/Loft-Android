@@ -7,6 +7,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class CreationViewModel(private val repository: CreationRepository) : ScopedViewModel() {
+    //TODO change it to keyboard up + which editText should get focus
     private val _keyboardUp = MutableLiveData<Boolean>()
     val keyboardUp: LiveData<Boolean>
         get() = _keyboardUp
