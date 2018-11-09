@@ -1,11 +1,12 @@
-package io.github.louistsaitszho.loft.onboarding
+package io.github.louistsaitszho.loft.enterLoft
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import io.github.louistsaitszho.loft.common.NavigationFragment
-import io.github.louistsaitszho.loft.common.Scene
+import io.github.louistsaitszho.loft.common.Transition
+import io.github.louistsaitszho.loft.whatIsLoft.R
 import kotlinx.android.synthetic.main.fragment_enter_loft.*
 
 class EnterLoftFragment : NavigationFragment() {
@@ -17,12 +18,10 @@ class EnterLoftFragment : NavigationFragment() {
     override fun onStart() {
         super.onStart()
         fab_create_loft.setOnClickListener {
-            //            findNavController().navigate(R.id.action_enterLoftFragment_to_creationFragment)
-            navigationDelegate.navigate(Scene.ENTER_LOFT, Scene.CREATION)
+            navigationDelegate.navigate(Transition.EnterToCreation())
         }
         fab_join_loft.setOnClickListener {
-            //            findNavController().navigate(R.id.action_enterLoftFragment_to_joiningFragment)
-            navigationDelegate.navigate(Scene.ENTER_LOFT, Scene.JOINING)
+            navigationDelegate.navigate(Transition.EnterToJoining())
         }
     }
 }

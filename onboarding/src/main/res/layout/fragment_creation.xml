@@ -46,6 +46,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/loft_name_hint"
             android:inputType="textAutoCorrect"
+            android:importantForAutofill="no"
             tools:text="Something" />
 
     </android.support.design.widget.TextInputLayout>
@@ -66,6 +67,7 @@
             android:hint="@string/your_name_hint"
             android:imeOptions="actionSend"
             android:inputType="textAutoCorrect"
+            android:autofillHints="name"
             tools:text="Sth else" />
 
     </android.support.design.widget.TextInputLayout>

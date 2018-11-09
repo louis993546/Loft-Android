@@ -1,11 +1,11 @@
-package io.github.louistsaitszho.loft.onboarding
+package io.github.louistsaitszho.loft.whatIsLoft
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import io.github.louistsaitszho.loft.common.NavigationFragment
-import io.github.louistsaitszho.loft.common.Scene
+import io.github.louistsaitszho.loft.common.Transition
 import kotlinx.android.synthetic.main.fragment_what_is_loft.*
 
 class WhatIsLoftFragment : NavigationFragment() {
@@ -18,7 +18,7 @@ class WhatIsLoftFragment : NavigationFragment() {
     override fun onResume() {
         super.onResume()
         fab_next.setOnClickListener {
-            navigationDelegate.navigate(Scene.WHAT_IS_LOFT, Scene.ENTER_LOFT)
+            navigationDelegate.navigate(Transition.WhatIsToEnter())
         }
     }
 }

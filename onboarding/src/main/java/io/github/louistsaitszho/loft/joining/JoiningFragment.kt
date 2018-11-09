@@ -1,15 +1,16 @@
 package io.github.louistsaitszho.loft.joining
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import io.github.louistsaitszho.loft.onboarding.R
+import io.github.louistsaitszho.loft.common.NavigationFragment
+import io.github.louistsaitszho.loft.common.Transition
+import io.github.louistsaitszho.loft.whatIsLoft.R
 import kotlinx.android.synthetic.main.fragment_joining.*
 import org.koin.android.viewmodel.ext.android.viewModel as viewModelLazily
 
-class JoiningFragment : Fragment() {
+class JoiningFragment : NavigationFragment() {
 
     val viewModel: JoiningViewModel by viewModelLazily()
 
@@ -27,7 +28,8 @@ class JoiningFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         fab_join_loft_confirm.setOnClickListener {
-
+            //TODO check data, ask ViewModel to send it to api, some LD return different states
+            navigationDelegate.navigate(Transition.Joining2WaitForConfirmation())
         }
     }
 }

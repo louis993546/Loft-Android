@@ -10,7 +10,7 @@ import android.view.inputmethod.EditorInfo
 import io.github.louistsaitszho.loft.common.utils.getInputText
 import io.github.louistsaitszho.loft.common.utils.hideSoftKeyboard
 import io.github.louistsaitszho.loft.common.utils.showSoftKeyboard
-import io.github.louistsaitszho.loft.onboarding.R
+import io.github.louistsaitszho.loft.whatIsLoft.R
 import kotlinx.android.synthetic.main.fragment_creation.*
 import org.koin.android.viewmodel.ext.android.viewModel as viewModelLazily
 
