@@ -8,7 +8,7 @@ plugins {
 }
 
 android {
-    compileSdkVersion(28)
+    compileSdkVersion(27)
     defaultConfig {
         applicationId = "io.github.louistsaitszho.loft"
         minSdkVersion(21)
