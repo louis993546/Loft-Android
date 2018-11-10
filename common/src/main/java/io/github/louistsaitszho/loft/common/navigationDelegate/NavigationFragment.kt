@@ -1,4 +1,4 @@
-package io.github.louistsaitszho.loft.common
+package io.github.louistsaitszho.loft.common.navigationDelegate
 
 import android.content.Context
 import android.support.annotation.CallSuper

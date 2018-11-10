@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:resizeableActivity="true"
-        tools:ignore="GoogleAppIndexingWarning">
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:targetApi="n">
         <activity
             android:name=".TheMostImportantActivity"
             android:windowSoftInputMode="adjustResize">

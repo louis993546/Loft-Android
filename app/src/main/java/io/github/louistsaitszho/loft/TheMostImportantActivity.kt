@@ -3,8 +3,8 @@ package io.github.louistsaitszho.loft
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import androidx.navigation.findNavController
-import io.github.louistsaitszho.loft.common.NavigationDelegate
-import io.github.louistsaitszho.loft.common.Transition
+import io.github.louistsaitszho.loft.common.navigationDelegate.NavigationDelegate
+import io.github.louistsaitszho.loft.common.navigationDelegate.Transition
 
 /**
  * This is the one and only activity in the app. Everything lives on Fragments, navigation via the

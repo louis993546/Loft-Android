@@ -34,7 +34,8 @@
         android:inputType="textCapSentences|textAutoCorrect|textShortMessage"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/image_button_send"
-        app:layout_constraintStart_toEndOf="@id/image_button_add" />
+        app:layout_constraintStart_toEndOf="@id/image_button_add"
+        tools:targetApi="o" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view_chat"

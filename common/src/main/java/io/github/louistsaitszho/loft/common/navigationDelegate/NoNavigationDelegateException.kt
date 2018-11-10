@@ -1,4 +1,4 @@
-package io.github.louistsaitszho.loft.common
+package io.github.louistsaitszho.loft.common.navigationDelegate
 
 /**
  * This exception will be thrown when [NavigationFragment] can't attach itself to

@@ -1,4 +1,4 @@
-package io.github.louistsaitszho.loft.common
+package io.github.louistsaitszho.loft.common.navigationDelegate
 
 /**
  * This exist to solve the problem of "Fragments across modules needs to be able to be able to
