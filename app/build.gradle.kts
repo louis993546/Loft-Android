@@ -13,7 +13,7 @@ android {
         applicationId = "io.github.louistsaitszho.loft"
         minSdkVersion(project.ext["min_sdk_version"] as Int)
         targetSdkVersion(project.ext["target_sdk_version"] as Int)
-        versionCode = 2
+        versionCode = 3
         versionName = "1.0"
         testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
         resConfigs("en")
