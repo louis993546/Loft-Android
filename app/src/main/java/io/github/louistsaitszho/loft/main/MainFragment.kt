@@ -1,5 +1,6 @@
 package io.github.louistsaitszho.loft.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -22,5 +23,9 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         tab_layout.setupWithViewPager(view_pager)
         view_pager.adapter = pagerAdapter
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        pagerAdapter.delegateOnActivityResult(requestCode, resultCode, data)
     }
 }

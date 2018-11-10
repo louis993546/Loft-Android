@@ -2,7 +2,10 @@
 
 package io.github.louistsaitszho.loft.common.utils
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
+import android.provider.MediaStore
 import android.support.v4.app.Fragment
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
@@ -31,4 +34,12 @@ inline fun EditText.showSoftKeyboardAndFocus() {
 inline fun Fragment.hideSoftKeyboard() {
     (requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
             .hideSoftInputFromWindow(view?.windowToken, 0)
+}
+
+inline fun Activity.openCamera(requestCode: Int) {
+    Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
+        takePictureIntent.resolveActivity(this.packageManager)?.also {
+            startActivityForResult(takePictureIntent, requestCode)
+        }
+    }
 }

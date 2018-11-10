@@ -1,6 +1,7 @@
 package io.github.louistsaitszho.loft.main
 
 import android.content.Context
+import android.content.Intent
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
@@ -44,6 +45,19 @@ class MainPagerAdapter(
         Page.SCHEDULE -> context.getString(R.string.tab_title_schedule)
         Page.MEMBER -> context.getString(R.string.tab_title_members)
         Page.MORE -> context.getString(R.string.tab_title_more)
+    }
+
+    /**
+     * This make it possible for [MainFragment] to send onActivityResult results to the fragment
+     * that triggers it originally.
+     */
+    fun delegateOnActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        when (requestCode) {
+            ChatFragment.CAMERA_REQUEST_CODE ->
+                pageOrder.filter { it == Page.CHAT }.forEachIndexed { index, _ ->
+                    getItem(index).onActivityResult(requestCode, resultCode, data)
+                }
+        }
     }
 }
 
