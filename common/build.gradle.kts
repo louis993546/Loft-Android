@@ -1,7 +1,9 @@
+import org.jetbrains.kotlin.config.KotlinCompilerVersion
+
 plugins {
     id("com.android.library")
-    id("kotlin-android-extensions")
     id("kotlin-android")
+    id("kotlin-android-extensions")
     id("kotlin-kapt")
 }
 
@@ -31,7 +33,7 @@ android {
 }
 
 dependencies {
-    api("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.0")
+    api(kotlin("stdlib-jdk7", KotlinCompilerVersion.VERSION))
     api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.0")
     api("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.0")
     api("com.android.support:appcompat-v7:27.1.1")
