@@ -2,7 +2,7 @@
     <string name="app_name">Loft</string>
     <string name="tab_title_chat">Chat</string>
     <string name="tab_title_notes">Notes</string>
-    <string name="tab_title_to_do">To-do</string>
+    <string name="tab_title_tasks">Tasks</string>
     <string name="tab_title_schedule">Schedule</string>
     <string name="tab_title_members">Members</string>
     <string name="tab_title_more">More</string>

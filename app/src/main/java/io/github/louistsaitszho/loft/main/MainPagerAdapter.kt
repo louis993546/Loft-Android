@@ -40,7 +40,7 @@ class MainPagerAdapter(
     override fun getPageTitle(position: Int): CharSequence? = when (pageOrder[position]) {
         Page.CHAT -> context.getString(R.string.tab_title_chat)
         Page.NOTE -> context.getString(R.string.tab_title_notes)
-        Page.TO_DO -> context.getString(R.string.tab_title_to_do)
+        Page.TO_DO -> context.getString(R.string.tab_title_tasks)
         Page.SCHEDULE -> context.getString(R.string.tab_title_schedule)
         Page.MEMBER -> context.getString(R.string.tab_title_members)
         Page.MORE -> context.getString(R.string.tab_title_more)

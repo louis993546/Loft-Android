@@ -4,6 +4,7 @@ import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.paging.PagedList
 import io.github.louistsaitszho.loft.common.ScopedViewModel
+import io.github.louistsaitszho.loft.common.model.Note
 
 class NotesViewModel(private val repository: NotesRepository) : ScopedViewModel() {
     private val _state = MutableLiveData<State>()

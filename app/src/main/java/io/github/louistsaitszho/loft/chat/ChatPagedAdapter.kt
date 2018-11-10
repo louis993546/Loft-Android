@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import io.github.louistsaitszho.loft.R
 import io.github.louistsaitszho.loft.common.model.Message
 
+/**
+ * TODO feels like there's got to be a way to make a generic version of this
+ */
 class ChatPagedAdapter : PagedListAdapter<Message, ChatViewHolder>(ChatDiffCallback) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
             ChatViewHolder(LayoutInflater.from(parent.context).inflate(

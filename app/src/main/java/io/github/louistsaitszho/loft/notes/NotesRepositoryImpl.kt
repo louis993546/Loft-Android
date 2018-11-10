@@ -2,6 +2,7 @@ package io.github.louistsaitszho.loft.notes
 
 import android.arch.paging.PagedList
 import io.github.louistsaitszho.loft.api.LoftApi
+import io.github.louistsaitszho.loft.common.model.Note
 
 class NotesRepositoryImpl(val api: LoftApi) : NotesRepository {
     override suspend fun createNote(content: String): Note {
