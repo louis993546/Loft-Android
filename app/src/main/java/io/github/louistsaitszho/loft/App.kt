@@ -4,11 +4,13 @@ import android.app.Application
 import android.os.StrictMode
 import com.jakewharton.threetenabp.AndroidThreeTen
 import io.github.louistsaitszho.loft.Module.Companion.onboardingModule
+import io.github.louistsaitszho.loft.api.LoftApiImpl
 import io.github.louistsaitszho.loft.api.Module.Companion.apiModule
 import io.github.louistsaitszho.loft.chat.ChatRepository
 import io.github.louistsaitszho.loft.chat.ChatRepositoryImpl
 import io.github.louistsaitszho.loft.chat.ChatViewModel
 import io.github.louistsaitszho.loft.common.Module.Companion.commonModule
+import io.github.louistsaitszho.loft.common.keyValueStore.KeyValueStore
 import io.github.louistsaitszho.loft.main.MainRepository
 import io.github.louistsaitszho.loft.main.MainRepositoryImpl
 import io.github.louistsaitszho.loft.notes.NotesRepository
@@ -45,7 +47,13 @@ class App : Application() {
 //                    .build()
 //            )
             StrictMode.setVmPolicy(StrictMode.VmPolicy.Builder()
-                    .detectAll()
+                    .setClassInstanceLimit(MainRepositoryImpl::class.java, 1)
+                    .setClassInstanceLimit(NotesRepositoryImpl::class.java, 1)
+                    .setClassInstanceLimit(ChatRepositoryImpl::class.java, 1)
+                    .setClassInstanceLimit(SplashRepositoryImpl::class.java, 1)
+                    .setClassInstanceLimit(ChatRepositoryImpl::class.java, 1)
+                    .setClassInstanceLimit(LoftApiImpl::class.java, 1)
+                    .setClassInstanceLimit(KeyValueStore::class.java, 1)
                     .penaltyLog()
                     .penaltyDeath()
                     .build()
@@ -59,7 +67,6 @@ class App : Application() {
 
 /**
  * For the main module
- * TODO move it to right app module once it has been modularize
  */
 val mainModule = module {
     single<MainRepository> { MainRepositoryImpl() }

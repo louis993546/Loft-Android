@@ -9,6 +9,9 @@ import io.github.louistsaitszho.loft.R
 import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment : Fragment() {
+    private val pagerAdapter: MainPagerAdapter by lazy {
+        MainPagerAdapter(requireFragmentManager(), requireContext())
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -18,6 +21,6 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         tab_layout.setupWithViewPager(view_pager)
-        view_pager.adapter = MainPagerAdapter(requireFragmentManager(), requireContext())
+        view_pager.adapter = pagerAdapter
     }
 }

@@ -17,7 +17,12 @@ import org.koin.android.viewmodel.ext.android.viewModel
 class ChatFragment : Fragment() {
     private val vm: ChatViewModel by viewModel()
     private val chatPagedAdapter: ChatPagedAdapter by lazy { ChatPagedAdapter() }
-    private val layoutManager: LinearLayoutManager by lazy { LinearLayoutManager(requireContext()) }
+    private val layoutManager: LinearLayoutManager by lazy {
+        LinearLayoutManager(requireContext()).apply {
+            stackFromEnd = true     //bottom to top
+//            reverseLayout = true    //new at bottom?
+        }
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -30,6 +35,9 @@ class ChatFragment : Fragment() {
         recycler_view_chat.layoutManager = layoutManager
         edit_text_message.setOnFocusChangeListener { _, hasFocus ->
             if (!hasFocus) hideSoftKeyboard()
+        }
+        image_button_send.setOnClickListener {
+
         }
     }
 }

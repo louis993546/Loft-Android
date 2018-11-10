@@ -18,7 +18,7 @@ class WhatIsLoftFragment : NavigationFragment() {
     override fun onResume() {
         super.onResume()
         fab_next.setOnClickListener {
-            navigationDelegate.navigate(Transition.WhatIsToEnter())
+            navigationDelegate?.navigate(Transition.WhatIsToEnter())
         }
     }
 }

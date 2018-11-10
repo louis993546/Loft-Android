@@ -1,6 +1,7 @@
 package io.github.louistsaitszho.loft.common
 
 import android.content.Context
+import android.support.annotation.CallSuper
 import android.support.v4.app.Fragment
 
 /**
@@ -10,7 +11,7 @@ import android.support.v4.app.Fragment
  * See [NavigationDelegate] on how the other side pick things up
  */
 abstract class NavigationFragment : Fragment() {
-    lateinit var navigationDelegate: NavigationDelegate
+    protected var navigationDelegate: NavigationDelegate? = null
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
@@ -19,5 +20,18 @@ abstract class NavigationFragment : Fragment() {
         } else {
             throw NoNavigationDelegateException(this.javaClass.simpleName)
         }
+    }
+
+    /**
+     * There's probably a reason why detach happen (activity is being destroy), and when that
+     * happens, you DON'T want to be referencing the soon-to-be-dead activity and leak it. So
+     * whenever fragment is being detach, also remove reference to the activity
+     *
+     * [CallSuper] is added to make sure any activity that override [onDetach] can't skip this
+     */
+    @CallSuper
+    override fun onDetach() {
+        super.onDetach()
+        navigationDelegate = null
     }
 }

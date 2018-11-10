@@ -29,7 +29,7 @@ class JoiningFragment : NavigationFragment() {
         super.onStart()
         fab_join_loft_confirm.setOnClickListener {
             //TODO check data, ask ViewModel to send it to api, some LD return different states
-            navigationDelegate.navigate(Transition.Joining2WaitForConfirmation())
+            navigationDelegate?.navigate(Transition.Joining2WaitForConfirmation())
         }
     }
 }

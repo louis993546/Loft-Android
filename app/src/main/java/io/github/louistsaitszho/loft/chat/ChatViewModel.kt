@@ -6,4 +6,7 @@ import io.github.louistsaitszho.loft.common.ScopedViewModel
 class ChatViewModel(val repository: ChatRepository) : ScopedViewModel() {
 
     //TODO send text, image, video, attachment, etc
+    fun send(text: String) {
+
+    }
 }
