@@ -13,6 +13,11 @@ android {
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = mapOf("room.schemaLocation" to "$projectDir/schemas")
+            }
+        }
     }
     buildTypes {
         getByName("release") {
