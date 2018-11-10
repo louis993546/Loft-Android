@@ -6,7 +6,6 @@ import android.content.Context
 import android.support.v4.app.Fragment
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
-import android.widget.TextView
 
 /**
  * This place houses a bunch of random extension functions
@@ -14,7 +13,7 @@ import android.widget.TextView
  *   right now because of the stupid navigation
  */
 
-inline fun TextView.getInputText(): String = text.toString()
+inline fun EditText.getInputText(): String = text.toString()
 
 /**
  * Show keyboard + focus on that edit text. Exactly as the name suggest. Note that if it cannot

@@ -8,4 +8,8 @@
     <string name="tab_title_more">More</string>
     <string name="content_description_button_send_message">Send message</string>
     <string name="content_description_button_add_media">Add multi-media message button</string>
+    <string name="chat_add_media_camera">Take picture</string>
+    <string name="chat_add_media_gallery">Add image from gallery</string>
+    <string name="content_description_button_add_media_gallery">Button to open gallery to select image</string>
+    <string name="content_description_button_add_media_camera">Button to open camera to take picture</string>
 </resources>

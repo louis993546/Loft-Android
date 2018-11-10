@@ -1,50 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".chat.ChatFragment">
 
-    <!--TODO style this button correctly-->
-    <ImageButton
-        android:id="@+id/image_button_send"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:src="@drawable/ic_send_black_24dp"
-        android:contentDescription="@string/content_description_button_send_message"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <ImageButton
-        android:id="@+id/image_button_add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_add_black_24dp"
-        android:contentDescription="@string/content_description_button_add_media"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <!--TODO style this button correctly-->
+        <ImageButton
+            android:id="@+id/image_button_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:contentDescription="@string/content_description_button_send_message"
+            android:src="@drawable/ic_send_black_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-    <EditText
-        android:id="@+id/edit_text_message"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:importantForAutofill="no"
-        android:inputType="textCapSentences|textAutoCorrect|textShortMessage"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/image_button_send"
-        app:layout_constraintStart_toEndOf="@id/image_button_add"
-        tools:targetApi="o" />
+        <ImageButton
+            android:id="@+id/image_button_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/content_description_button_add_media"
+            android:src="@drawable/ic_add_black_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view_chat"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/edit_text_message"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/viewholder_chat" />
+        <EditText
+            android:id="@+id/edit_text_message"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:importantForAutofill="no"
+            android:inputType="textCapSentences|textAutoCorrect|textShortMessage"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/image_button_send"
+            app:layout_constraintStart_toEndOf="@id/image_button_add"
+            tools:targetApi="o" />
 
-</android.support.constraint.ConstraintLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_chat"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/edit_text_message"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/viewholder_chat" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.design.widget.CoordinatorLayout>

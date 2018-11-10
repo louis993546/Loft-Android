@@ -1,12 +1,16 @@
 package io.github.louistsaitszho.loft.chat
 
+import android.arch.lifecycle.Observer
 import android.os.Bundle
+import android.support.design.widget.BottomSheetDialog
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import io.github.louistsaitszho.loft.R
+import io.github.louistsaitszho.loft.common.utils.getInputText
 import io.github.louistsaitszho.loft.common.utils.hideSoftKeyboard
 import kotlinx.android.synthetic.main.fragment_chat.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -31,13 +35,43 @@ class ChatFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        recycler_view_chat.adapter = chatPagedAdapter
-        recycler_view_chat.layoutManager = layoutManager
+        observeVmLiveData()
+        setupRecyclerView()
+        setupButtonOnClick()
         edit_text_message.setOnFocusChangeListener { _, hasFocus ->
             if (!hasFocus) hideSoftKeyboard()
         }
-        image_button_send.setOnClickListener {
-
-        }
     }
+
+    private fun observeVmLiveData() {
+        vm.messageFieldLiveData.observe(this, Observer { edit_text_message.setText(it) })
+    }
+
+    private fun setupRecyclerView() {
+        recycler_view_chat.adapter = chatPagedAdapter
+        recycler_view_chat.layoutManager = layoutManager
+    }
+
+    private fun setupButtonOnClick() {
+        image_button_add.setOnClickListener { openMediaPickerDialog() }
+        image_button_send.setOnClickListener { vm.send(edit_text_message.getInputText()) }
+    }
+
+    private fun openMediaPickerDialog() {
+        val bottomSheetDialog = BottomSheetDialog(requireActivity())
+        bottomSheetDialog.setContentView(requireActivity().layoutInflater.inflate(
+                R.layout.bottom_sheet_dialog_chat_add_media,
+                null
+        ))
+        bottomSheetDialog.findViewById<ImageButton>(R.id.image_button_take_picture)?.setOnClickListener {
+            bottomSheetDialog.dismiss()
+            //TODO open camera intent
+        }
+        bottomSheetDialog.findViewById<ImageButton>(R.id.image_button_add_image_from_gallery)?.setOnClickListener {
+            bottomSheetDialog.dismiss()
+            //TODO open gallery intent
+        }
+        bottomSheetDialog.show()
+    }
+
 }

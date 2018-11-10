@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageButton
+        android:id="@+id/image_button_take_picture"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@string/content_description_button_add_media_camera"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_add_a_photo_black_24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@+id/image_button_add_image_from_gallery"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/image_button_add_image_from_gallery"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@string/content_description_button_add_media_gallery"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_add_to_photos_black_24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/image_button_take_picture"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_view_label_take_picture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/chat_add_media_camera"
+        app:layout_constraintEnd_toEndOf="@+id/image_button_take_picture"
+        app:layout_constraintStart_toStartOf="@+id/image_button_take_picture"
+        app:layout_constraintTop_toBottomOf="@+id/image_button_take_picture" />
+
+    <TextView
+        android:id="@+id/text_view_label_add_image_from_gallery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/chat_add_media_gallery"
+        app:layout_constraintEnd_toEndOf="@id/image_button_add_image_from_gallery"
+        app:layout_constraintStart_toStartOf="@id/image_button_add_image_from_gallery"
+        app:layout_constraintTop_toBottomOf="@id/image_button_add_image_from_gallery" />
+
+</android.support.constraint.ConstraintLayout>
