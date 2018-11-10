@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
         android:src="@drawable/ic_send_black_24dp"
+        android:contentDescription="@string/content_description_button_send_message"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -21,6 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_add_black_24dp"
+        android:contentDescription="@string/content_description_button_add_media"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -28,6 +30,8 @@
         android:id="@+id/edit_text_message"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:importantForAutofill="no"
+        android:inputType="textCapSentences|textAutoCorrect|textShortMessage"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/image_button_send"
         app:layout_constraintStart_toEndOf="@id/image_button_add" />

@@ -6,4 +6,6 @@
     <string name="tab_title_schedule">Schedule</string>
     <string name="tab_title_members">Members</string>
     <string name="tab_title_more">More</string>
+    <string name="content_description_button_send_message">Send message</string>
+    <string name="content_description_button_add_media">Add multi-media message button</string>
 </resources>
