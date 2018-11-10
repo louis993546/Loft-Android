@@ -33,8 +33,8 @@ android {
 
 dependencies {
     api(kotlin("stdlib-jdk7", KotlinCompilerVersion.VERSION))
-    api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.0")
-    api("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.0")
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.1")
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.1")
     api("com.android.support:appcompat-v7:27.1.1")
     api("com.android.support:design:27.1.1")
     api("org.koin:koin-android-viewmodel:1.0.1")
