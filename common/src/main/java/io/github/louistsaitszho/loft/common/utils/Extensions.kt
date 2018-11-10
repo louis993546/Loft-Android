@@ -9,6 +9,8 @@ import android.provider.MediaStore
 import android.support.v4.app.Fragment
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import java.nio.charset.Charset
+import kotlin.random.Random
 
 /**
  * This place houses a bunch of random extension functions
@@ -43,3 +45,8 @@ inline fun Activity.openCamera(requestCode: Int) {
         }
     }
 }
+
+/**
+ * A simple function to make generating random string easier
+ */
+inline fun Random.nextString(length: Int) = String(nextBytes(length), Charset.defaultCharset())

@@ -24,11 +24,12 @@ class TheMostImportantActivity : AppCompatActivity(), NavigationDelegate {
 
     override fun navigate(transition: Transition) {
         val actionId = when (transition) {
-            is Transition.WhatIsToEnter -> R.id.action_whatIsLoftFragment_to_enterLoftFragment
-            is Transition.EnterToCreation -> R.id.action_enterLoftFragment_to_creationFragment
-            is Transition.EnterToJoining -> R.id.action_enterLoftFragment_to_joiningFragment
+            is Transition.WhatIs2Enter -> R.id.action_whatIsLoftFragment_to_enterLoftFragment
+            is Transition.Enter2Creation -> R.id.action_enterLoftFragment_to_creationFragment
+            is Transition.Enter2Joining -> R.id.action_enterLoftFragment_to_joiningFragment
             is Transition.Joining2WaitForConfirmation ->
                 R.id.action_joiningFragment_to_waitForConfirmationFragment
+            is Transition.Creation2Main -> R.id.action_creationFragment_to_mainFragment
         }
         findNavController(R.id.nav_host_fragment).navigate(actionId)
     }

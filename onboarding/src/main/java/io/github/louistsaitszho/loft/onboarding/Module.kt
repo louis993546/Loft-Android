@@ -10,7 +10,7 @@ import org.koin.dsl.module.module
 class Module {
     companion object {
         val onboardingModule = module {
-            single<CreationRepository> { CreationRepositoryImpl(api = get()) }
+            single<CreationRepository> { CreationRepositoryImpl(get(), get()) }
 
             viewModel { JoiningViewModel() }
             viewModel { CreationViewModel(repository = get()) }

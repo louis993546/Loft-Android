@@ -2,11 +2,12 @@ package io.github.louistsaitszho.loft.onboarding.creation
 
 import android.arch.lifecycle.Observer
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import io.github.louistsaitszho.loft.common.navigationDelegate.NavigationFragment
+import io.github.louistsaitszho.loft.common.navigationDelegate.Transition
 import io.github.louistsaitszho.loft.common.utils.getInputText
 import io.github.louistsaitszho.loft.common.utils.hideSoftKeyboard
 import io.github.louistsaitszho.loft.common.utils.showSoftKeyboardAndFocus
@@ -14,7 +15,7 @@ import io.github.louistsaitszho.loft.onboarding.R
 import kotlinx.android.synthetic.main.fragment_creation.*
 import org.koin.android.viewmodel.ext.android.viewModel as viewModelLazily
 
-class CreationFragment : Fragment() {
+class CreationFragment : NavigationFragment() {
 
     private val viewModel: CreationViewModel by viewModelLazily()
 
@@ -45,6 +46,11 @@ class CreationFragment : Fragment() {
                     edit_text_loft_name.error = null
                     edit_text_your_name.error = null
                 }
+            }
+        })
+        viewModel.nextSceneLiveData.observe(this, Observer {
+            if (it == CreationViewModel.NextScene.MAIN) {
+                navigationDelegate?.navigate(Transition.Creation2Main())
             }
         })
     }

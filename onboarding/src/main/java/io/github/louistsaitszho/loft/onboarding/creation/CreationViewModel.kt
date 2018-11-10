@@ -15,6 +15,10 @@ class CreationViewModel(private val repository: CreationRepository) : ScopedView
     val formErrorLiveData: LiveData<CreationFormError>
         get() = _formErrorLiveData
 
+    private val _nextSceneLiveData = MutableLiveData<NextScene?>()
+    val nextSceneLiveData: LiveData<NextScene?>
+        get() = _nextSceneLiveData
+
     fun createLoft(loftName: String, yourName: String) {
         var formError: CreationFormError? = null
         var keyboardFocus: KeyboardFocus? = null
@@ -32,8 +36,9 @@ class CreationViewModel(private val repository: CreationRepository) : ScopedView
 
         if (formError == null) {
             launch(Dispatchers.IO) {
-                repository.createLoftAndUser(loftName, yourName)    //TODO return type not confirmed yet
-                //TODO trigger view to go to main if it's successful
+                val loftAndUser = repository.createLoftAndUser(loftName, yourName)
+                repository.saveLoftAndUser(loftAndUser.first, loftAndUser.second)
+                _nextSceneLiveData.postValue(NextScene.MAIN)
             }
         }
     }
@@ -46,5 +51,9 @@ class CreationViewModel(private val repository: CreationRepository) : ScopedView
     enum class KeyboardFocus {
         LOFT_NAME,
         USER_NAME
+    }
+
+    enum class NextScene {
+        MAIN
     }
 }
