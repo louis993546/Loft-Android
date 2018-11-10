@@ -11,7 +11,7 @@ class LoftApiImpl : LoftApi {
     private val api: Retrofit by lazy {
         Retrofit.Builder()
                 .addCallAdapterFactory(CoroutineCallAdapterFactory())
-                .baseUrl("")
+                .baseUrl(BuildConfig.HOST)
                 .client(okhttp)
                 .build()
     }

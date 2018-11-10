@@ -27,6 +27,19 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+    flavorDimensions("server")
+    productFlavors {
+        create("local") {
+            setDimension("server")
+            buildConfigField("String", "HOST", "\"http://localhost:3000/\"")
+        }
+        create("staging") {
+            setDimension("server")
+            buildConfigField("String", "HOST", "\"https://www.google.com/\"")
+        }
+        //TODO staging server
+        //TODO production server
+    }
 }
 
 dependencies {
