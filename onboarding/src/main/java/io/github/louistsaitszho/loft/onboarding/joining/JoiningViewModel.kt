@@ -1,4 +1,4 @@
-package io.github.louistsaitszho.loft.joining
+package io.github.louistsaitszho.loft.onboarding.joining
 
 import android.arch.lifecycle.ViewModel
 

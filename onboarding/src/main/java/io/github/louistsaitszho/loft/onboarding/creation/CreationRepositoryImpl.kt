@@ -1,4 +1,4 @@
-package io.github.louistsaitszho.loft.creation
+package io.github.louistsaitszho.loft.onboarding.creation
 
 import io.github.louistsaitszho.loft.api.LoftApi
 

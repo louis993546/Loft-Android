@@ -3,7 +3,6 @@ package io.github.louistsaitszho.loft
 import android.app.Application
 import android.os.StrictMode
 import com.jakewharton.threetenabp.AndroidThreeTen
-import io.github.louistsaitszho.loft.Module.Companion.onboardingModule
 import io.github.louistsaitszho.loft.api.LoftApiImpl
 import io.github.louistsaitszho.loft.api.Module.Companion.apiModule
 import io.github.louistsaitszho.loft.chat.ChatRepository
@@ -16,6 +15,7 @@ import io.github.louistsaitszho.loft.main.MainRepositoryImpl
 import io.github.louistsaitszho.loft.notes.NotesRepository
 import io.github.louistsaitszho.loft.notes.NotesRepositoryImpl
 import io.github.louistsaitszho.loft.notes.NotesViewModel
+import io.github.louistsaitszho.loft.onboarding.Module.Companion.onboardingModule
 import io.github.louistsaitszho.loft.splash.SplashRepository
 import io.github.louistsaitszho.loft.splash.SplashRepositoryImpl
 import io.github.louistsaitszho.loft.splash.SplashViewModel

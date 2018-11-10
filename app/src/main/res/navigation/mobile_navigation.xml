@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/whatIsLoftFragment"
-        android:name="io.github.louistsaitszho.loft.whatIsLoft.WhatIsLoftFragment"
+        android:name="io.github.louistsaitszho.loft.onboarding.whatIsLoft.WhatIsLoftFragment"
         android:label="fragment_what_is_loft"
         tools:layout="@layout/fragment_what_is_loft">
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/enterLoftFragment"
-        android:name="io.github.louistsaitszho.loft.enterLoft.EnterLoftFragment"
+        android:name="io.github.louistsaitszho.loft.onboarding.enterLoft.EnterLoftFragment"
         android:label="fragment_enter_loft"
         tools:layout="@layout/fragment_enter_loft">
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/joiningFragment"
-        android:name="io.github.louistsaitszho.loft.joining.JoiningFragment"
+        android:name="io.github.louistsaitszho.loft.onboarding.joining.JoiningFragment"
         android:label="fragment_joining"
         tools:layout="@layout/fragment_joining">
         <action
@@ -54,7 +54,7 @@
     </fragment>
     <fragment
         android:id="@+id/creationFragment"
-        android:name="io.github.louistsaitszho.loft.creation.CreationFragment"
+        android:name="io.github.louistsaitszho.loft.onboarding.creation.CreationFragment"
         android:label="fragment_creation"
         tools:layout="@layout/fragment_creation">
         <action
@@ -70,6 +70,6 @@
         tools:layout="@layout/fragment_main" />
     <fragment
         android:id="@+id/waitForConfirmationFragment"
-        android:name="io.github.louistsaitszho.loft.waitForConfirmation.WaitForConfirmationFragment"
+        android:name="io.github.louistsaitszho.loft.onboarding.waitForConfirmation.WaitForConfirmationFragment"
         android:label="WaitForConfirmationFragment" />
 </navigation>

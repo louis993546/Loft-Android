@@ -1,4 +1,4 @@
-package io.github.louistsaitszho.loft.creation
+package io.github.louistsaitszho.loft.onboarding.creation
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData

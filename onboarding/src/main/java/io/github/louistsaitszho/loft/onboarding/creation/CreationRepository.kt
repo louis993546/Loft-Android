@@ -1,4 +1,4 @@
-package io.github.louistsaitszho.loft.creation
+package io.github.louistsaitszho.loft.onboarding.creation
 
 interface CreationRepository {
     //TODO return type undetermined

@@ -1,4 +1,4 @@
-package io.github.louistsaitszho.loft.whatIsLoft;
+package io.github.louistsaitszho.loft.onboarding;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

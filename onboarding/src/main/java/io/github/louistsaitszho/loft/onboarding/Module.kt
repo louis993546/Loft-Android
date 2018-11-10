@@ -1,9 +1,9 @@
-package io.github.louistsaitszho.loft
+package io.github.louistsaitszho.loft.onboarding
 
-import io.github.louistsaitszho.loft.creation.CreationRepository
-import io.github.louistsaitszho.loft.creation.CreationRepositoryImpl
-import io.github.louistsaitszho.loft.creation.CreationViewModel
-import io.github.louistsaitszho.loft.joining.JoiningViewModel
+import io.github.louistsaitszho.loft.onboarding.creation.CreationRepository
+import io.github.louistsaitszho.loft.onboarding.creation.CreationRepositoryImpl
+import io.github.louistsaitszho.loft.onboarding.creation.CreationViewModel
+import io.github.louistsaitszho.loft.onboarding.joining.JoiningViewModel
 import org.koin.android.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
 

@@ -1,4 +1,4 @@
-package io.github.louistsaitszho.loft.whatIsLoft;
+package io.github.louistsaitszho.loft.onboarding;
 
 import org.junit.Test;
 
