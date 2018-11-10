@@ -1,7 +1,6 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    val support_library_version = "27.1.1"
     repositories {
         google()
         jcenter()
@@ -19,9 +18,12 @@ allprojects {
         google()
         jcenter()
     }
-    val compile_sdk_version by extra { 28 }
-    val min_sdk_verion by extra { 21 }
-    val target_sdk_version by extra { 27 }
+    //TODO see if there is a type-safe way to use extra properties
+    ext {
+        set("compile_sdk_version", 27)
+        set("min_sdk_version", 21)
+        set("target_sdk_version", 27)
+    }
 }
 
 tasks.register("clean", Delete::class.java) {

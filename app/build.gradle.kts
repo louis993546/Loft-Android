@@ -8,11 +8,11 @@ plugins {
 }
 
 android {
-    compileSdkVersion(27)
+    compileSdkVersion(project.ext["compile_sdk_version"] as Int)
     defaultConfig {
         applicationId = "io.github.louistsaitszho.loft"
-        minSdkVersion(21)
-        targetSdkVersion(27)
+        minSdkVersion(project.ext["min_sdk_version"] as Int)
+        targetSdkVersion(project.ext["target_sdk_version"] as Int)
         versionCode = 2
         versionName = "1.0"
         testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
@@ -49,7 +49,10 @@ dependencies {
     implementation(project(":database"))
     implementation(project(":onboarding"))
 
-    implementation("com.android.support:support-v4:27.1.1")
+    val supportLibraryVersion = "27.1.1"
+    implementation("com.android.support:support-v4:$supportLibraryVersion")
+    implementation("com.android.support:cardview-v7:$supportLibraryVersion")
+    implementation("com.android.support:customtabs:$supportLibraryVersion")
 
     val navigationVersion = "1.0.0-alpha07"
     implementation("android.arch.navigation:navigation-fragment:$navigationVersion")
