@@ -46,6 +46,7 @@ androidExtensions {
 dependencies {
     implementation(project(":common"))
     implementation(project(":api"))
+    implementation(project(":database"))
     implementation(project(":onboarding"))
 
     implementation("com.android.support:support-v4:27.1.1")

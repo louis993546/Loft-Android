@@ -2,5 +2,6 @@ include(
         ":app",
         ":common",
         ":api",
-        ":onboarding"
+        ":onboarding",
+        ":database"
 )
