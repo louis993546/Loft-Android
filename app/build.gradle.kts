@@ -1,3 +1,4 @@
+import com.android.builder.model.SigningConfig
 import org.jetbrains.kotlin.gradle.internal.AndroidExtensionsExtension
 
 plugins {
@@ -18,13 +19,40 @@ android {
         testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
         resConfigs("en")
     }
+    signingConfigs {
+        create("release") {
+            //TODO how to get the right storeFile accordingly?
+
+            //This one has the right way to setup all passwords and stuff
+//            storeFile = rootProject.file("release.keystore")
+//            storePassword = System.getenv("ANDROID_KEYSTORE_PASSWORD")
+//            keyAlias = System.getenv("ANDROID_KEYSTORE_ALIAS")
+//            keyPassword = System.getenv("ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD")
+
+            //This one is good enough for me to temporarily test ProGuard
+//            storeFile = getByName("debug").storeFile
+//            storePassword = "android"
+//            keyAlias = "androiddebugkey"
+//            keyPassword = "android"
+        }
+    }
     buildTypes {
         getByName("release") {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isCrunchPngs = true
+            isShrinkResources = true
+            isZipAlignEnabled = true
+            signingConfig = signingConfigs.getByName("release")
             proguardFiles(
                     getDefaultProguardFile("proguard-android.txt"),
                     "proguard-rules.pro"
             )
+        }
+        getByName("debug") {
+            isMinifyEnabled = false
+            isCrunchPngs = false
+            isShrinkResources = false
+            isDebuggable = true
         }
     }
     flavorDimensions("server")
