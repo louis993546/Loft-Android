@@ -62,6 +62,7 @@ dependencies {
     implementation("com.android.support:support-v4:$supportLibraryVersion")
     implementation("com.android.support:cardview-v7:$supportLibraryVersion")
     implementation("com.android.support:customtabs:$supportLibraryVersion")
+    implementation("com.android.support:preference-v14:$supportLibraryVersion")
 
     val navigationVersion = "1.0.0-alpha07"
     implementation("android.arch.navigation:navigation-fragment:$navigationVersion")
