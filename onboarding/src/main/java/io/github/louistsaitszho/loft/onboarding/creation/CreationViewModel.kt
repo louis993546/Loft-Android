@@ -22,6 +22,9 @@ import io.github.louistsaitszho.loft.common.ScopedViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+/**
+ * TODO this desperately needs to be split up to VM & UC
+ */
 class CreationViewModel(private val repository: CreationRepository) : ScopedViewModel() {
     private val _keyboardFocusLiveData = MutableLiveData<KeyboardFocus>()
     val keyboardFocusLiveData: LiveData<KeyboardFocus>
@@ -35,6 +38,9 @@ class CreationViewModel(private val repository: CreationRepository) : ScopedView
     val nextSceneLiveData: LiveData<NextScene?>
         get() = _nextSceneLiveData
 
+    /**
+     * TODO refactor the first section: it's a bit too confusing
+     */
     fun createLoft(loftName: String, yourName: String) {
         var formError: CreationFormError? = null
         var keyboardFocus: KeyboardFocus? = null
@@ -53,6 +59,7 @@ class CreationViewModel(private val repository: CreationRepository) : ScopedView
         if (formError == null) {
             launch(Dispatchers.IO) {
                 val loftAndUser = repository.createLoftAndUser(loftName, yourName)
+                //TODO catch network error and show something to ui
                 repository.saveLoftAndUser(loftAndUser.first, loftAndUser.second)
                 _nextSceneLiveData.postValue(NextScene.MAIN)
             }

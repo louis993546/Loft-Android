@@ -18,6 +18,7 @@
     <string name="app_name">onboarding</string>
     <string name="what_is_loft_description">Loft makes living with people easier</string>
     <string name="loft_name_hint">Loft name</string>
+    <string name="loft_id_hint">Loft ID</string>
     <string name="your_name_hint">Your name</string>
     <string name="label_close_and_wait">Close and wait</string>
 </resources>

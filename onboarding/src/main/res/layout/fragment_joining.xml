@@ -55,9 +55,10 @@
         app:layout_constraintTop_toBottomOf="@id/toolbar">
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/edit_text_loft_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Loft ID"
+            android:hint="@string/loft_id_hint"
             android:inputType="numberDecimal" />
 
     </android.support.design.widget.TextInputLayout>
@@ -71,6 +72,7 @@
         app:layout_constraintTop_toBottomOf="@id/text_input_layout_loft_id">
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/edit_text_your_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/your_name_hint"
@@ -87,6 +89,7 @@
         app:layout_constraintTop_toBottomOf="@id/text_input_layout_your_name">
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/edit_text_request_join_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Leave a message 💬"

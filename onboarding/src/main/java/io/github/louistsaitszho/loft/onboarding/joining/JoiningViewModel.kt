@@ -16,6 +16,51 @@
  */
 package io.github.louistsaitszho.loft.onboarding.joining
 
-import android.arch.lifecycle.ViewModel
+import android.arch.lifecycle.LiveData
+import android.arch.lifecycle.MutableLiveData
+import io.github.louistsaitszho.loft.common.ScopedViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlin.random.Random
 
-class JoiningViewModel : ViewModel()
+class JoiningViewModel : ScopedViewModel() {
+    private val _viewState = MutableLiveData<ViewState>()
+    val viewStateLiveData: LiveData<ViewState>
+        get() = _viewState
+
+    /**
+     * Call this message to fire a request to join a loft
+     */
+    fun sendJoinLoftRequest(loftId: String, yourName: String, message: String) {
+        val invalidFields = mutableListOf<InputField>()
+
+        if (loftId.isEmpty()) {
+            invalidFields.add(InputField.LOFT_ID)
+        }
+
+        if (yourName.isEmpty()) {
+            invalidFields.add(InputField.USER_NAME)
+        }
+
+        if (invalidFields.isNotEmpty()) {
+            _viewState.postValue(ViewState.InvalidInput(invalidFields))
+        } else {
+            launch(Dispatchers.IO) {
+                delay(Random.nextLong(1000))    //TODO mock api delay
+                _viewState.postValue(ViewState.RequestSent())
+            }
+        }
+    }
+
+    sealed class ViewState {
+        class InvalidInput(val invalidFields: List<InputField>) : ViewState()
+        class RequestSent : ViewState()
+    }
+
+    enum class InputField {
+        LOFT_ID,
+        USER_NAME,
+        MESSAGE
+    }
+}
