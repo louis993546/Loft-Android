@@ -14,18 +14,19 @@
  * You should have received a copy of the GNU General Public License
  * along with Loft Android Client.  If not, see <https://www.gnu.org/licenses/>.
  */
-package io.github.louistsaitszho.loft.notes
+package io.github.louistsaitszho.loft.onboarding
 
-import android.arch.paging.PagedList
-import io.github.louistsaitszho.loft.api.LoftApi
-import io.github.louistsaitszho.loft.common.model.Note
+import org.junit.Assert.assertEquals
+import org.junit.Test
 
-class NotesRepositoryImpl(val api: LoftApi) : NotesRepository {
-    override suspend fun createNote(content: String): Note {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun getNotesInPages(): PagedList<Note> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+/**
+ * Example local unit test, which will execute on the development machine (host).
+ *
+ * @see [Testing documentation](http://d.android.com/tools/testing)
+ */
+class ExampleUnitTest {
+    @Test
+    fun addition_isCorrect() {
+        assertEquals(4, (2 + 2).toLong())
     }
 }

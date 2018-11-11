@@ -14,18 +14,26 @@
  * You should have received a copy of the GNU General Public License
  * along with Loft Android Client.  If not, see <https://www.gnu.org/licenses/>.
  */
-package io.github.louistsaitszho.loft.notes
+package io.github.louistsaitszho.loft.onboarding
 
-import android.arch.paging.PagedList
-import io.github.louistsaitszho.loft.api.LoftApi
-import io.github.louistsaitszho.loft.common.model.Note
+import android.support.test.InstrumentationRegistry
+import android.support.test.runner.AndroidJUnit4
+import org.junit.Assert.assertEquals
+import org.junit.Test
+import org.junit.runner.RunWith
 
-class NotesRepositoryImpl(val api: LoftApi) : NotesRepository {
-    override suspend fun createNote(content: String): Note {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+/**
+ * Instrumented test, which will execute on an Android device.
+ *
+ * @see [Testing documentation](http://d.android.com/tools/testing)
+ */
+@RunWith(AndroidJUnit4::class)
+class ExampleInstrumentedTest {
+    @Test
+    fun useAppContext() {
+        // Context of the app under test.
+        val appContext = InstrumentationRegistry.getTargetContext()
 
-    override fun getNotesInPages(): PagedList<Note> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        assertEquals("io.github.louistsaitszho.loft.onboarding.test", appContext.packageName)
     }
 }
