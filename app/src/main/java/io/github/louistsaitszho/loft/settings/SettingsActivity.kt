@@ -17,14 +17,13 @@
 package io.github.louistsaitszho.loft.settings
 
 import android.os.Bundle
-import android.support.v7.preference.PreferenceFragmentCompat
+import android.os.PersistableBundle
+import android.support.v7.app.AppCompatActivity
 import io.github.louistsaitszho.loft.R
 
-/**
- * See this video on how to use it: https://www.youtube.com/watch?v=PS9jhuHECEQ
- */
-class SettingsFragment : PreferenceFragmentCompat() {
-    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-        addPreferencesFromResource(R.xml.preferences)
+class SettingsActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+        super.onCreate(savedInstanceState, persistentState)
+        setContentView(R.layout.activity_settings)
     }
 }
