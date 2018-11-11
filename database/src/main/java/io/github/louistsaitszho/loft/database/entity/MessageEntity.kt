@@ -6,7 +6,7 @@ import android.arch.persistence.room.PrimaryKey
 import java.util.*
 
 @Entity(tableName = "messages")
-data class MessageEntity(
+internal data class MessageEntity(
         @PrimaryKey(autoGenerate = false) var id: UUID,
         @ColumnInfo(name = "message") var message: String
 )

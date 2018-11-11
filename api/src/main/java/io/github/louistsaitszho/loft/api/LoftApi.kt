@@ -1,15 +1,14 @@
 package io.github.louistsaitszho.loft.api
 
-import io.github.louistsaitszho.loft.api.dto.CreateLoftResponse
-import io.github.louistsaitszho.loft.api.dto.NoteListResponse
-import io.github.louistsaitszho.loft.api.dto.RequestJoinLoftResponse
-
+/**
+ * TODO all the return type needs to be from .common.model.*
+ */
 interface LoftApi {
-    suspend fun createLoft(loftName: String, userName: String): CreateLoftResponse
-
-    suspend fun requestJoinLoft(loftCode: String, userName: String): RequestJoinLoftResponse
-
-    suspend fun getNotes(): NoteListResponse
+//    suspend fun createLoft(loftName: String, userName: String): CreateLoftResponse
+//
+//    suspend fun requestJoinLoft(loftCode: String, userName: String): RequestJoinLoftResponse
+//
+//    suspend fun getNotes(): NoteListResponse
 
 //    suspend fun createNote(newNote: NewNoteRequest): NewNoteResponse
 }

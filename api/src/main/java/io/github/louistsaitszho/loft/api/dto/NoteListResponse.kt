@@ -4,4 +4,4 @@ import com.squareup.moshi.JsonClass
 
 //TODO cursor
 @JsonClass(generateAdapter = true)
-data class NoteListResponse(val noteList: List<NoteResponse>)
+internal data class NoteListResponse(val noteList: List<NoteResponse>)
