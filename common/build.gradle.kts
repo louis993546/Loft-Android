@@ -55,6 +55,9 @@ dependencies {
     api("com.android.support:design:27.1.1")
     api("org.koin:koin-android-viewmodel:1.0.1")
     api("com.jakewharton.timber:timber:4.7.1")
+    val daggerVersion = "2.16"
+    api("com.google.dagger:dagger:$daggerVersion")
+    kapt("com.google.dagger:dagger-compiler:$daggerVersion")
     testImplementation("junit:junit:4.12")
     androidTestImplementation("com.android.support.test:runner:1.0.2")
     androidTestImplementation("com.android.support.test.espresso:espresso-core:3.0.2")
