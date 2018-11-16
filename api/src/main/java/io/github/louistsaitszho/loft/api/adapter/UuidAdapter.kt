@@ -14,17 +14,20 @@
  * You should have received a copy of the GNU General Public License
  * along with Loft Android Client.  If not, see <https://www.gnu.org/licenses/>.
  */
-package io.github.louistsaitszho.loft.api
+package io.github.louistsaitszho.loft.api.adapter
 
-/**
- * TODO all the return type needs to be from .common.model.*
- */
-interface LoftApi {
-//    suspend fun createLoft(loftName: String, userName: String): CreateLoftResponse
-//
-//    suspend fun requestJoinLoft(loftCode: String, userName: String): PostJoinLoftResponse
-//
-//    suspend fun getNotes(): NoteListResponse
+import com.squareup.moshi.FromJson
+import com.squareup.moshi.ToJson
+import java.util.*
 
-//    suspend fun createNote(newNote: NewNoteRequest): NewNoteResponse
+class UuidAdapter {
+    @FromJson
+    fun fromJson(string: String?): UUID? = try {
+        UUID.fromString(string)
+    } catch (e: IllegalArgumentException) {
+        null
+    }
+
+    @ToJson
+    fun toJson(uuid: UUID?): String? = uuid?.toString()
 }

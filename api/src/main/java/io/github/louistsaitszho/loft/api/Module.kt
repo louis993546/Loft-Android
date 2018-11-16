@@ -21,7 +21,11 @@ import org.koin.dsl.module.module
 class Module {
     companion object {
         val apiModule = module {
-            single<LoftApi> { LoftApiImpl() }
+            //TODO Move OkHttp to yet another module if I want glide to use the same instance?
+            single { NetworkSetupProvider.provideMoshi() }
+            single { NetworkSetupProvider.provideOkHttpClient() }
+            single { NetworkSetupProvider.providesRetrofit(okHttpClient = get(), moshi = get()) }
+            single<LoftApi> { LoftApiImpl(retrofit = get()) }
         }
     }
 }

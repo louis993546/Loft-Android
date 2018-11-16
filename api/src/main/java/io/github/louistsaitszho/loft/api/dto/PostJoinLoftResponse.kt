@@ -14,17 +14,9 @@
  * You should have received a copy of the GNU General Public License
  * along with Loft Android Client.  If not, see <https://www.gnu.org/licenses/>.
  */
-package io.github.louistsaitszho.loft.api
+package io.github.louistsaitszho.loft.api.dto
 
-/**
- * TODO all the return type needs to be from .common.model.*
- */
-interface LoftApi {
-//    suspend fun createLoft(loftName: String, userName: String): CreateLoftResponse
-//
-//    suspend fun requestJoinLoft(loftCode: String, userName: String): PostJoinLoftResponse
-//
-//    suspend fun getNotes(): NoteListResponse
+import com.squareup.moshi.JsonClass
 
-//    suspend fun createNote(newNote: NewNoteRequest): NewNoteResponse
-}
+@JsonClass(generateAdapter = true)
+internal data class PostJoinLoftResponse(val message: String)

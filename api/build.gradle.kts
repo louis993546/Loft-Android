@@ -67,6 +67,9 @@ dependencies {
 
     val retrofitVersion = "2.4.0"
     implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
+    implementation("com.squareup.retrofit2:converter-moshi:$retrofitVersion") {
+        exclude("com.squareup.moshi", "moshi")  //Old version w/o codegen
+    }
 
     val moshiVersion = "1.7.0"
     implementation("com.squareup.moshi:moshi:$moshiVersion")
