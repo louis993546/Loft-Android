@@ -66,7 +66,7 @@ class CreationFragment : NavigationFragment() {
         })
         viewModel.nextSceneLiveData.observe(this, Observer {
             if (it == CreationViewModel.NextScene.MAIN) {
-                navigationDelegate?.navigate(Transition.Creation2Main())
+                navDele?.navigate(Transition.Creation2Main)
             }
         })
     }

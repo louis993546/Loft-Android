@@ -27,12 +27,12 @@ import android.support.v4.app.Fragment
  * See [NavigationDelegate] on how the other side pick things up
  */
 abstract class NavigationFragment : Fragment() {
-    protected var navigationDelegate: NavigationDelegate? = null
+    protected var navDele: NavigationDelegate? = null
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
         if (context is NavigationDelegate) {
-            navigationDelegate = context
+            navDele = context
         } else {
             throw NoNavigationDelegateException(this.javaClass.simpleName)
         }
@@ -48,6 +48,6 @@ abstract class NavigationFragment : Fragment() {
     @CallSuper
     override fun onDetach() {
         super.onDetach()
-        navigationDelegate = null
+        navDele = null
     }
 }

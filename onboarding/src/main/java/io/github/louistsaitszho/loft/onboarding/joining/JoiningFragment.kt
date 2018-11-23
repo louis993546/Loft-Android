@@ -28,27 +28,44 @@ import io.github.louistsaitszho.loft.common.utils.getInputText
 import io.github.louistsaitszho.loft.common.utils.showSoftKeyboardAndFocus
 import io.github.louistsaitszho.loft.onboarding.R
 import io.github.louistsaitszho.loft.onboarding.joining.JoiningViewModel.InputField
+import io.github.louistsaitszho.loft.onboarding.joining.JoiningViewModel.ViewState.INVALID_INPUT
+import io.github.louistsaitszho.loft.onboarding.joining.JoiningViewModel.ViewState.REQUEST_SENT
 import kotlinx.android.synthetic.main.fragment_joining.*
 import org.koin.android.viewmodel.ext.android.viewModel as viewModelLazily
 
+/**
+ *
+ */
 class JoiningFragment : NavigationFragment() {
 
     private val viewModel: JoiningViewModel by viewModelLazily()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_joining, container, false)
+    override fun onCreateView(
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
+    ): View? {
         observeViewState()
-        return view
+        return inflater.inflate(R.layout.fragment_joining, container, false)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        fab_join_loft_confirm.setOnClickListener {
+            viewModel.sendJoinLoftRequest(
+                    edit_text_loft_id.getInputText(),
+                    edit_text_your_name.getInputText(),
+                    edit_text_request_join_message.getInputText()
+            )
+        }
     }
 
     private fun observeViewState() {
         viewModel.viewStateLiveData.observe(this, Observer { viewState ->
             when (viewState) {
-                is JoiningViewModel.ViewState.InvalidInput ->
-                    highlightInvalidInputFields(viewState.invalidFields)
-                is JoiningViewModel.ViewState.RequestSent ->
-                    navigationDelegate?.navigate(Transition.Joining2WaitForConfirmation())
+                INVALID_INPUT -> highlightInvalidInputFields(viewModel.getInvalidFields())
+                REQUEST_SENT -> navDele?.navigate(Transition.Joining2WaitForConfirmation)
+                null -> TODO("I don't think this is possible")
             }
         })
     }
@@ -86,16 +103,5 @@ class JoiningFragment : NavigationFragment() {
             if (it.second) return it.first
         }
         return null
-    }
-
-    override fun onStart() {
-        super.onStart()
-        fab_join_loft_confirm.setOnClickListener {
-            viewModel.sendJoinLoftRequest(
-                    edit_text_loft_id.getInputText(),
-                    edit_text_your_name.getInputText(),
-                    edit_text_request_join_message.getInputText()
-            )
-        }
     }
 }

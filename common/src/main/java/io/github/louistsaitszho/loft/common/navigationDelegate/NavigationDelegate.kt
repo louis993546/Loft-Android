@@ -25,9 +25,9 @@ interface NavigationDelegate {
 }
 
 sealed class Transition {
-    class WhatIs2Enter : Transition()
-    class Enter2Creation : Transition()
-    class Enter2Joining : Transition()
-    class Joining2WaitForConfirmation : Transition()
-    class Creation2Main : Transition()
+    object WhatIs2Enter : Transition()
+    object Enter2Creation : Transition()
+    object Enter2Joining : Transition()
+    object Joining2WaitForConfirmation : Transition()
+    object Creation2Main : Transition()
 }

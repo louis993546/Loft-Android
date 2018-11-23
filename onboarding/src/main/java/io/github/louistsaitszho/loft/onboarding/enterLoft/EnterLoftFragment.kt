@@ -34,10 +34,10 @@ class EnterLoftFragment : NavigationFragment() {
     override fun onStart() {
         super.onStart()
         fab_create_loft.setOnClickListener {
-            navigationDelegate?.navigate(Transition.Enter2Creation())
+            navDele?.navigate(Transition.Enter2Creation)
         }
         fab_join_loft.setOnClickListener {
-            navigationDelegate?.navigate(Transition.Enter2Joining())
+            navDele?.navigate(Transition.Enter2Joining)
         }
     }
 }

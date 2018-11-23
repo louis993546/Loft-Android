@@ -29,6 +29,8 @@ class JoiningViewModel : ScopedViewModel() {
     val viewStateLiveData: LiveData<ViewState>
         get() = _viewState
 
+    private val currentInvalidFields = mutableListOf<InputField>()
+
     /**
      * Call this message to fire a request to join a loft
      */
@@ -44,23 +46,24 @@ class JoiningViewModel : ScopedViewModel() {
         }
 
         if (invalidFields.isNotEmpty()) {
-            _viewState.postValue(ViewState.InvalidInput(invalidFields))
+            currentInvalidFields.clear()
+            currentInvalidFields.addAll(invalidFields)
+            _viewState.postValue(ViewState.INVALID_INPUT)
         } else {
             launch(Dispatchers.IO) {
                 delay(Random.nextLong(1000))    //TODO mock api delay
-                _viewState.postValue(ViewState.RequestSent())
+                _viewState.postValue(ViewState.REQUEST_SENT)
             }
         }
     }
 
-    sealed class ViewState {
-        class InvalidInput(val invalidFields: List<InputField>) : ViewState()
-        class RequestSent : ViewState()
+    fun getInvalidFields(): List<InputField> = currentInvalidFields
+
+    enum class ViewState {
+        INVALID_INPUT, REQUEST_SENT
     }
 
     enum class InputField {
-        LOFT_ID,
-        USER_NAME,
-        MESSAGE
+        LOFT_ID, USER_NAME, MESSAGE
     }
 }
