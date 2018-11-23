@@ -2,15 +2,15 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "93196f3ceee13d0f97001921ac576298",
+    "identityHash": "442affa03f13c7703e55c3644d783dfe",
     "entities": [
       {
         "tableName": "messages",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `message` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`message_id` TEXT NOT NULL, `message` TEXT NOT NULL, `read_at` TEXT, PRIMARY KEY(`message_id`))",
         "fields": [
           {
             "fieldPath": "id",
-            "columnName": "id",
+            "columnName": "message_id",
             "affinity": "TEXT",
             "notNull": true
           },
@@ -19,11 +19,75 @@
             "columnName": "message",
             "affinity": "TEXT",
             "notNull": true
+          },
+          {
+            "fieldPath": "read",
+            "columnName": "read_at",
+            "affinity": "TEXT",
+            "notNull": false
           }
         ],
         "primaryKey": {
           "columnNames": [
-            "id"
+            "message_id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "notes",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`note_id` TEXT NOT NULL, `content` TEXT NOT NULL, PRIMARY KEY(`note_id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "note_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "content",
+            "columnName": "content",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "note_id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "tasks",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`task_id` TEXT NOT NULL, `due_date` TEXT, `task` TEXT NOT NULL, PRIMARY KEY(`task_id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "task_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dueDate",
+            "columnName": "due_date",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "task",
+            "columnName": "task",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "task_id"
           ],
           "autoGenerate": false
         },
@@ -33,7 +97,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"93196f3ceee13d0f97001921ac576298\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"442affa03f13c7703e55c3644d783dfe\")"
     ]
   }
 }

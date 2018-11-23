@@ -14,15 +14,21 @@
  * You should have received a copy of the GNU General Public License
  * along with Loft Android Client.  If not, see <https://www.gnu.org/licenses/>.
  */
-package io.github.louistsaitszho.loft.common.model
+package io.github.louistsaitszho.loft.database.typeConverter
 
-import java.util.*
+import android.arch.persistence.room.TypeConverter
+import org.threeten.bp.LocalDate
+import org.threeten.bp.format.DateTimeFormatter
 
-/**
- *
- */
-data class Message(
-        val id: UUID,
-        val message: String,
-        val sender: Member
-)
+class LocalDateConverter {
+    @TypeConverter
+    fun toString(localDate: LocalDate?): String? = localDate?.format(formatter)
+
+    @TypeConverter
+    fun toLocalDate(string: String?): LocalDate? =
+            string?.let { LocalDate.parse(it, formatter) }
+
+    companion object {
+        private val formatter = DateTimeFormatter.ISO_LOCAL_DATE
+    }
+}

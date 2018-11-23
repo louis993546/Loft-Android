@@ -20,8 +20,16 @@ import android.arch.persistence.room.Database
 import android.arch.persistence.room.RoomDatabase
 import android.arch.persistence.room.TypeConverters
 import io.github.louistsaitszho.loft.database.entity.MessageEntity
+import io.github.louistsaitszho.loft.database.entity.NoteEntity
+import io.github.louistsaitszho.loft.database.entity.TaskEntity
+import io.github.louistsaitszho.loft.database.typeConverter.LocalDateConverter
+import io.github.louistsaitszho.loft.database.typeConverter.OffsetDateTimeConverter
 import io.github.louistsaitszho.loft.database.typeConverter.UuidTypeConverter
 
-@Database(entities = [MessageEntity::class], version = 1)
-@TypeConverters(UuidTypeConverter::class)
+@Database(
+        entities = [MessageEntity::class, NoteEntity::class, TaskEntity::class],
+        version = 1,
+        exportSchema = true
+)
+@TypeConverters(UuidTypeConverter::class, OffsetDateTimeConverter::class, LocalDateConverter::class)
 abstract class LoftRoomDatabase : RoomDatabase()

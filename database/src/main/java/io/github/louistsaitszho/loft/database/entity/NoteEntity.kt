@@ -14,15 +14,25 @@
  * You should have received a copy of the GNU General Public License
  * along with Loft Android Client.  If not, see <https://www.gnu.org/licenses/>.
  */
-package io.github.louistsaitszho.loft.common.model
+package io.github.louistsaitszho.loft.database.entity
 
+import android.arch.persistence.room.ColumnInfo
+import android.arch.persistence.room.Entity
+import android.arch.persistence.room.PrimaryKey
+import io.github.louistsaitszho.loft.database.entity.NoteEntity.Companion.TABLE_NAME
 import java.util.*
 
 /**
  *
  */
-data class Message(
-        val id: UUID,
-        val message: String,
-        val sender: Member
-)
+@Entity(tableName = TABLE_NAME)
+internal data class NoteEntity(
+        @PrimaryKey(autoGenerate = false) @ColumnInfo(name = COLUMN_ID) val id: UUID,
+        @ColumnInfo(name = COLUMN_CONTENT) val content: String
+) {
+    companion object {
+        const val TABLE_NAME = "notes"
+        const val COLUMN_ID = "note_id"
+        const val COLUMN_CONTENT = "content"
+    }
+}

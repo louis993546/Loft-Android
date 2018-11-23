@@ -14,15 +14,14 @@
  * You should have received a copy of the GNU General Public License
  * along with Loft Android Client.  If not, see <https://www.gnu.org/licenses/>.
  */
-package io.github.louistsaitszho.loft.common.model
+package io.github.louistsaitszho.loft.database.dao
 
-import java.util.*
+import android.arch.persistence.room.Dao
+import io.github.louistsaitszho.loft.common.model.Message
 
-/**
- *
- */
-data class Message(
-        val id: UUID,
-        val message: String,
-        val sender: Member
-)
+@Dao
+interface MessageDao {
+    fun findTextMessage(text: String)
+
+    fun insertMessage(message: Message)
+}

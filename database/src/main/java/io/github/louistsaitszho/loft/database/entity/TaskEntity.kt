@@ -19,23 +19,20 @@ package io.github.louistsaitszho.loft.database.entity
 import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
-import io.github.louistsaitszho.loft.database.entity.MessageEntity.Companion.TABLE_NAME
-import org.threeten.bp.OffsetDateTime
+import io.github.louistsaitszho.loft.database.entity.TaskEntity.Companion.TABLE_NAME
+import org.threeten.bp.LocalDate
 import java.util.*
 
-/**
- *
- */
 @Entity(tableName = TABLE_NAME)
-internal data class MessageEntity(
-        @PrimaryKey(autoGenerate = false) @ColumnInfo(name = COLUMN_ID) val id: UUID,
-        @ColumnInfo(name = COLUMN_MESSAGE) val message: String,
-        @ColumnInfo(name = COLUMN_READ_AT) val read: OffsetDateTime?
+data class TaskEntity(
+        @PrimaryKey @ColumnInfo(name = COLUMN_ID) val id: UUID,
+        @ColumnInfo(name = COLUMN_DUE_DATE) val dueDate: LocalDate?,
+        @ColumnInfo(name = COLUMN_TASK) val task: String
 ) {
     companion object {
-        const val TABLE_NAME = "messages"
-        const val COLUMN_ID = "message_id"
-        const val COLUMN_MESSAGE = "message"
-        const val COLUMN_READ_AT = "read_at"
+        const val TABLE_NAME = "tasks"
+        const val COLUMN_ID = "task_id"
+        const val COLUMN_DUE_DATE = "due_date"
+        const val COLUMN_TASK = "task"
     }
 }

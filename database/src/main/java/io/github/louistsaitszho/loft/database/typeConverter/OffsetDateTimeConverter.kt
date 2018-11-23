@@ -14,15 +14,21 @@
  * You should have received a copy of the GNU General Public License
  * along with Loft Android Client.  If not, see <https://www.gnu.org/licenses/>.
  */
-package io.github.louistsaitszho.loft.common.model
+package io.github.louistsaitszho.loft.database.typeConverter
 
-import java.util.*
+import android.arch.persistence.room.TypeConverter
+import org.threeten.bp.OffsetDateTime
+import org.threeten.bp.format.DateTimeFormatter
 
-/**
- *
- */
-data class Message(
-        val id: UUID,
-        val message: String,
-        val sender: Member
-)
+class OffsetDateTimeConverter {
+    @TypeConverter
+    fun toString(offsetDateTime: OffsetDateTime?): String? = offsetDateTime?.format(formatter)
+
+    @TypeConverter
+    fun toOffsetDateTime(string: String?): OffsetDateTime? =
+            string?.let { OffsetDateTime.parse(it, formatter) }
+
+    companion object {
+        private val formatter = DateTimeFormatter.ISO_OFFSET_DATE_TIME
+    }
+}
