@@ -48,14 +48,15 @@ class JoiningViewModel : ScopedViewModel() {
         } else {
             launch(Dispatchers.IO) {
                 delay(Random.nextLong(1000))    //TODO mock api delay
-                _viewState.postValue(ViewState.RequestSent())
+                _viewState.postValue(ViewState.RequestSentSuccess)
             }
         }
     }
 
     sealed class ViewState {
         class InvalidInput(val invalidFields: List<InputField>) : ViewState()
-        class RequestSent : ViewState()
+        object RequestSentSuccess : ViewState()
+        class RequestSentFailure(val cause: Throwable) : ViewState()
     }
 
     enum class InputField {

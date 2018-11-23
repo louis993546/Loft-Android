@@ -35,11 +35,24 @@ class JoiningFragment : NavigationFragment() {
 
     private val viewModel: JoiningViewModel by viewModelLazily()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_joining, container, false)
+    override fun onCreateView(
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
+    ): View? {
         observeViewState()
-        return view
+        return inflater.inflate(R.layout.fragment_joining, container, false)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        fab_join_loft_confirm.setOnClickListener {
+            viewModel.sendJoinLoftRequest(
+                    edit_text_loft_id.getInputText(),
+                    edit_text_your_name.getInputText(),
+                    edit_text_request_join_message.getInputText()
+            )
+        }
     }
 
     private fun observeViewState() {
@@ -47,8 +60,10 @@ class JoiningFragment : NavigationFragment() {
             when (viewState) {
                 is JoiningViewModel.ViewState.InvalidInput ->
                     highlightInvalidInputFields(viewState.invalidFields)
-                is JoiningViewModel.ViewState.RequestSent ->
+                is JoiningViewModel.ViewState.RequestSentSuccess ->
                     navigationDelegate?.navigate(Transition.Joining2WaitForConfirmation())
+                is JoiningViewModel.ViewState.RequestSentFailure ->
+                    TODO("need to define how to show different types of error message")
             }
         })
     }
@@ -86,16 +101,5 @@ class JoiningFragment : NavigationFragment() {
             if (it.second) return it.first
         }
         return null
-    }
-
-    override fun onStart() {
-        super.onStart()
-        fab_join_loft_confirm.setOnClickListener {
-            viewModel.sendJoinLoftRequest(
-                    edit_text_loft_id.getInputText(),
-                    edit_text_your_name.getInputText(),
-                    edit_text_request_join_message.getInputText()
-            )
-        }
     }
 }
