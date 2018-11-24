@@ -19,17 +19,32 @@ package io.github.louistsaitszho.loft.database
 import android.arch.persistence.room.Database
 import android.arch.persistence.room.RoomDatabase
 import android.arch.persistence.room.TypeConverters
-import io.github.louistsaitszho.loft.database.entity.MessageEntity
-import io.github.louistsaitszho.loft.database.entity.NoteEntity
-import io.github.louistsaitszho.loft.database.entity.TaskEntity
+import io.github.louistsaitszho.loft.database.dao.EventDao
+import io.github.louistsaitszho.loft.database.dao.MemberDao
+import io.github.louistsaitszho.loft.database.dao.NoteDao
+import io.github.louistsaitszho.loft.database.dao.TaskDao
+import io.github.louistsaitszho.loft.database.entity.*
 import io.github.louistsaitszho.loft.database.typeConverter.LocalDateConverter
 import io.github.louistsaitszho.loft.database.typeConverter.OffsetDateTimeConverter
 import io.github.louistsaitszho.loft.database.typeConverter.UuidTypeConverter
 
 @Database(
-        entities = [MessageEntity::class, NoteEntity::class, TaskEntity::class],
+        entities = [
+            MessageEntity::class,
+            NoteEntity::class,
+            TaskEntity::class,
+            EventEntity::class,
+            MemberEntity::class],
         version = 1,
         exportSchema = true
 )
 @TypeConverters(UuidTypeConverter::class, OffsetDateTimeConverter::class, LocalDateConverter::class)
-abstract class LoftRoomDatabase : RoomDatabase()
+abstract class LoftRoomDatabase : RoomDatabase() {
+    abstract fun eventDao(): EventDao
+
+    abstract fun memberDao(): MemberDao
+
+    abstract fun noteDao(): NoteDao
+
+    abstract fun taskDao(): TaskDao
+}
