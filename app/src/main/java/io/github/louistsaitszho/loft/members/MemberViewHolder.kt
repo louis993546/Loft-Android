@@ -23,7 +23,7 @@ import kotlinx.android.extensions.LayoutContainer
 
 class MemberViewHolder(
         override val containerView: View?
-) : RecyclerView.ViewHolder(containerView), LayoutContainer {
+) : RecyclerView.ViewHolder(containerView!!), LayoutContainer {
     fun bind(member: Member) {
 
     }

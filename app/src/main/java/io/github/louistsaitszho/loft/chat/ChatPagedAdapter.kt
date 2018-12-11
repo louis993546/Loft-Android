@@ -40,12 +40,11 @@ class ChatPagedAdapter : PagedListAdapter<Message, ChatViewHolder>(ChatDiffCallb
 
     companion object {
         private val ChatDiffCallback = object : DiffUtil.ItemCallback<Message>() {
-            override fun areItemsTheSame(oldItem: Message?, newItem: Message?) =
-                    oldItem?.id == newItem?.id
+            override fun areItemsTheSame(oldItem: Message, newItem: Message) =
+                    oldItem.id == newItem.id
 
-            override fun areContentsTheSame(oldItem: Message?, newItem: Message?) =
+            override fun areContentsTheSame(oldItem: Message, newItem: Message) =
                     oldItem == newItem
-
         }
     }
 }

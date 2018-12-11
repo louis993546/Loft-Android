@@ -37,11 +37,10 @@ class MemberPagedAdapter : PagedListAdapter<Member, MemberViewHolder>(memberDiff
 
     companion object {
         private val memberDiffCallback = object : DiffUtil.ItemCallback<Member>() {
-            override fun areItemsTheSame(oldItem: Member?, newItem: Member?) =
-                    oldItem?.id == newItem?.id
+            override fun areItemsTheSame(oldItem: Member, newItem: Member) =
+                    oldItem.id == newItem.id
 
-            override fun areContentsTheSame(oldItem: Member?, newItem: Member?) =
-                    oldItem == newItem
+            override fun areContentsTheSame(oldItem: Member, newItem: Member) = oldItem == newItem
         }
     }
 }

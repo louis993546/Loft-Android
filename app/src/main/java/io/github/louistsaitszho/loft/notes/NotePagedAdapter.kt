@@ -43,12 +43,8 @@ class NotePagedAdapter : PagedListAdapter<Note, NoteViewHolder>(NoteDiffCallback
 
     companion object {
         private val NoteDiffCallback = object : DiffUtil.ItemCallback<Note>() {
-            override fun areItemsTheSame(oldItem: Note?, newItem: Note?) =
-                    oldItem?.id == newItem?.id
-
-            override fun areContentsTheSame(oldItem: Note?, newItem: Note?) =
-                    oldItem == newItem
-
+            override fun areItemsTheSame(oldItem: Note, newItem: Note) = oldItem.id == newItem.id
+            override fun areContentsTheSame(oldItem: Note, newItem: Note) = oldItem == newItem
         }
     }
 }

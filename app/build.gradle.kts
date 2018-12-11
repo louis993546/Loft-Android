@@ -74,13 +74,13 @@ dependencies {
     implementation(project(":database"))
     implementation(project(":onboarding"))
 
-    val supportLibraryVersion = "27.1.1"
+    val supportLibraryVersion = "28.0.0"
     implementation("com.android.support:support-v4:$supportLibraryVersion")
     implementation("com.android.support:cardview-v7:$supportLibraryVersion")
     implementation("com.android.support:customtabs:$supportLibraryVersion")
     implementation("com.android.support:preference-v14:$supportLibraryVersion")
 
-    val navigationVersion = "1.0.0-alpha07"
+    val navigationVersion = "1.0.0-alpha08"
     implementation("android.arch.navigation:navigation-fragment:$navigationVersion")
     implementation("android.arch.navigation:navigation-ui:$navigationVersion")
     implementation("android.arch.navigation:navigation-fragment-ktx:$navigationVersion")
