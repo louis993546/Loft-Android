@@ -64,5 +64,6 @@ inline fun Activity.openCamera(requestCode: Int) {
 
 /**
  * A simple function to make generating random string easier
+ * @param length is how many characters you want
  */
 inline fun Random.nextString(length: Int) = String(nextBytes(length), Charset.defaultCharset())

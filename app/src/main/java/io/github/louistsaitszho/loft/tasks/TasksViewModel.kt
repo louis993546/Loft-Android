@@ -16,6 +16,26 @@
  */
 package io.github.louistsaitszho.loft.tasks
 
+import android.arch.lifecycle.LiveData
+import android.arch.lifecycle.MutableLiveData
 import io.github.louistsaitszho.loft.common.ScopedViewModel
+import io.github.louistsaitszho.loft.common.model.Task
+import kotlinx.coroutines.launch
 
-class TasksViewModel : ScopedViewModel()
+/**
+ * TODO list
+ *
+ * -
+ */
+class TasksViewModel(private val repository: TasksRepository) : ScopedViewModel() {
+    private val _tasksListLiveData = MutableLiveData<List<Task>>()
+    val tasksListLiveData: LiveData<List<Task>>
+        get() = _tasksListLiveData
+
+    fun triggerTaskListFetching() {
+        launch {
+            val taskList = repository.getTasksTemp()
+            _tasksListLiveData.postValue(taskList)
+        }
+    }
+}

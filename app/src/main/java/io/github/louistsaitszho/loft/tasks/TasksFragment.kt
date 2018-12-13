@@ -16,16 +16,42 @@
  */
 package io.github.louistsaitszho.loft.tasks
 
+import android.arch.lifecycle.Observer
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import io.github.louistsaitszho.loft.R
+import kotlinx.android.synthetic.main.fragment_tasks.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class TasksFragment : Fragment() {
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_tasks, container, false)
+    private val vm: TasksViewModel by viewModel()
+    private val adapter: TaskAdapter by lazy { TaskAdapter() }
+    private val layoutManager: RecyclerView.LayoutManager by lazy {
+        LinearLayoutManager(requireContext())
+    }
+
+    override fun onCreateView(
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
+    ): View? = inflater.inflate(R.layout.fragment_tasks, container, false)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        recycler_view_tasks.layoutManager = layoutManager
+        recycler_view_tasks.adapter = adapter
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        vm.tasksListLiveData.observe(viewLifecycleOwner, Observer {
+            adapter.updateTaskList(it.orEmpty())
+        })
+        vm.triggerTaskListFetching()
     }
 }

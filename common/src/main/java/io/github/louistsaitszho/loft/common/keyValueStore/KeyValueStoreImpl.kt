@@ -25,7 +25,7 @@ import kotlin.random.Random
  * Implementation of Key-Value store, powered by SharedPreference
  */
 class KeyValueStoreImpl(private val context: Context) : KeyValueStore {
-    private var temporaryFakeToken: String? = null
+    private var temporaryFakeToken: String? = "asdfdsafsadf"
 
     companion object {
         const val PREFERENCE_ID = "loft"

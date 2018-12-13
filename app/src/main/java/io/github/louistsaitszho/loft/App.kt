@@ -35,6 +35,9 @@ import io.github.louistsaitszho.loft.onboarding.Module.Companion.onboardingModul
 import io.github.louistsaitszho.loft.splash.SplashRepository
 import io.github.louistsaitszho.loft.splash.SplashRepositoryImpl
 import io.github.louistsaitszho.loft.splash.SplashViewModel
+import io.github.louistsaitszho.loft.tasks.TasksRepository
+import io.github.louistsaitszho.loft.tasks.TasksRepositoryImpl
+import io.github.louistsaitszho.loft.tasks.TasksViewModel
 import org.koin.android.ext.android.startKoin
 import org.koin.android.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
@@ -88,9 +91,11 @@ val mainModule = module {
     single<MainRepository> { MainRepositoryImpl() }
     single<NotesRepository> { NotesRepositoryImpl(api = get()) }
     single<ChatRepository> { ChatRepositoryImpl() }
+    single<TasksRepository> { TasksRepositoryImpl() }
 
     viewModel { NotesViewModel(repository = get()) }
     viewModel { ChatViewModel(repository = get()) }
+    viewModel { TasksViewModel(repository = get()) }
 }
 
 /**

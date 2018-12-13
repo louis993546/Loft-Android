@@ -16,16 +16,17 @@
  */
 package io.github.louistsaitszho.loft.tasks
 
-import android.support.v7.widget.RecyclerView
-import android.view.View
 import io.github.louistsaitszho.loft.common.model.Task
-import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.viewholder_task.*
 
-class TaskViewHolder(
-        override val containerView: View?
-) : RecyclerView.ViewHolder(containerView!!), LayoutContainer {
-    fun bind(task: Task) {
-        text_view_task.text = task.title
-    }
+typealias Successful = Boolean
+
+interface TasksRepository {
+    //TODO this will probably not exist in final version (no pagination)
+    suspend fun getTasksTemp(): List<Task>
+
+    suspend fun createTask(newTask: Task): Successful
+
+    suspend fun updateTask(oldTask: Task, newTask: Task): Successful
+
+    suspend fun deleteTask(task: Task): Successful
 }
