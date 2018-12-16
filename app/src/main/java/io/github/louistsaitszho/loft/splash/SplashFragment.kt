@@ -27,11 +27,11 @@ import androidx.navigation.fragment.findNavController
 import io.github.louistsaitszho.loft.R
 import io.github.louistsaitszho.loft.splash.SplashViewModel.SceneAfterSplash.MAIN
 import io.github.louistsaitszho.loft.splash.SplashViewModel.SceneAfterSplash.ONBOARDING
-import org.koin.android.viewmodel.ext.android.viewModel as viewModelLazily
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class SplashFragment : Fragment() {
 
-    private val viewModel: SplashViewModel by viewModelLazily()
+    private val vm: SplashViewModel by viewModel()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -42,11 +42,11 @@ class SplashFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.findNextScene()
+        vm.findNextScene()
     }
 
     private fun observeViewModels() {
-        viewModel.sceneAfterSplash.observe(this, Observer {
+        vm.sceneAfterSplash.observe(this, Observer {
             when (it) {
                 ONBOARDING ->
                     navigateToNextWithDelay(R.id.action_splashFragment_to_whatIsLoftFragment)

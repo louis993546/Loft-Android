@@ -20,12 +20,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="wrap_content">
 
+    <CheckBox
+        android:id="@+id/check_box_task"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/text_view_task"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/check_box_task"
         tools:text="task" />
+
+    <!--TODO an ImageView (circular) to show the assignee-->
 
 </android.support.constraint.ConstraintLayout>

@@ -18,14 +18,24 @@ package io.github.louistsaitszho.loft.tasks
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import io.github.louistsaitszho.loft.common.model.Progress
 import io.github.louistsaitszho.loft.common.model.Task
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.viewholder_task.*
 
+/**
+ * TODO
+ * - on check click callback -> mark as done/not done
+ * - on item click callback -> open edit view
+ */
 class TaskViewHolder(
         override val containerView: View?
 ) : RecyclerView.ViewHolder(containerView!!), LayoutContainer {
     fun bind(task: Task) {
         text_view_task.text = task.title
+        when (task.progress) {
+            Progress.NOT_DONE -> check_box_task.isChecked = false
+            Progress.DONE -> check_box_task.isChecked = true
+        }
     }
 }

@@ -31,14 +31,14 @@ import io.github.louistsaitszho.loft.onboarding.joining.JoiningViewModel.InputFi
 import io.github.louistsaitszho.loft.onboarding.joining.JoiningViewModel.ViewState.INVALID_INPUT
 import io.github.louistsaitszho.loft.onboarding.joining.JoiningViewModel.ViewState.REQUEST_SENT
 import kotlinx.android.synthetic.main.fragment_joining.*
-import org.koin.android.viewmodel.ext.android.viewModel as viewModelLazily
+import org.koin.android.viewmodel.ext.android.viewModel
 
 /**
  *
  */
 class JoiningFragment : NavigationFragment() {
 
-    private val viewModel: JoiningViewModel by viewModelLazily()
+    private val vm: JoiningViewModel by viewModel()
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -52,7 +52,7 @@ class JoiningFragment : NavigationFragment() {
     override fun onStart() {
         super.onStart()
         fab_join_loft_confirm.setOnClickListener {
-            viewModel.sendJoinLoftRequest(
+            vm.sendJoinLoftRequest(
                     edit_text_loft_id.getInputText(),
                     edit_text_your_name.getInputText(),
                     edit_text_request_join_message.getInputText()
@@ -61,9 +61,9 @@ class JoiningFragment : NavigationFragment() {
     }
 
     private fun observeViewState() {
-        viewModel.viewStateLiveData.observe(this, Observer { viewState ->
+        vm.viewStateLiveData.observe(this, Observer { viewState ->
             when (viewState) {
-                INVALID_INPUT -> highlightInvalidInputFields(viewModel.getInvalidFields())
+                INVALID_INPUT -> highlightInvalidInputFields(vm.getInvalidFields())
                 REQUEST_SENT -> navDele?.navigate(Transition.Joining2WaitForConfirmation)
                 null -> TODO("I don't think this is possible")
             }

@@ -29,11 +29,11 @@ import io.github.louistsaitszho.loft.common.utils.hideSoftKeyboard
 import io.github.louistsaitszho.loft.common.utils.showSoftKeyboardAndFocus
 import io.github.louistsaitszho.loft.onboarding.R
 import kotlinx.android.synthetic.main.fragment_creation.*
-import org.koin.android.viewmodel.ext.android.viewModel as viewModelLazily
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class CreationFragment : NavigationFragment() {
 
-    private val viewModel: CreationViewModel by viewModelLazily()
+    private val vm: CreationViewModel by viewModel()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -43,7 +43,7 @@ class CreationFragment : NavigationFragment() {
     }
 
     private fun subscribeToAllLiveData() {
-        viewModel.keyboardFocusLiveData.observe(this, Observer { keyboardFocus ->
+        vm.keyboardFocusLiveData.observe(this, Observer { keyboardFocus ->
             when (keyboardFocus) {
                 CreationViewModel.KeyboardFocus.LOFT_NAME ->
                     edit_text_loft_name.showSoftKeyboardAndFocus()
@@ -52,7 +52,7 @@ class CreationFragment : NavigationFragment() {
                 null -> hideSoftKeyboard()
             }
         })
-        viewModel.formErrorLiveData.observe(this, Observer {
+        vm.formErrorLiveData.observe(this, Observer {
             when (it) {
                 CreationViewModel.CreationFormError.BLANK_LOFT_NAME ->
                     edit_text_loft_name.error = "Loft name cannot be blank"
@@ -64,7 +64,7 @@ class CreationFragment : NavigationFragment() {
                 }
             }
         })
-        viewModel.nextSceneLiveData.observe(this, Observer {
+        vm.nextSceneLiveData.observe(this, Observer {
             if (it == CreationViewModel.NextScene.MAIN) {
                 navDele?.navigate(Transition.Creation2Main)
             }
@@ -74,7 +74,7 @@ class CreationFragment : NavigationFragment() {
     override fun onStart() {
         super.onStart()
         fab_create_loft_confirm.setOnClickListener {
-            viewModel.createLoft(
+            vm.createLoft(
                     loftName = edit_text_loft_name.getInputText(),
                     yourName = edit_text_your_name.getInputText()
             )

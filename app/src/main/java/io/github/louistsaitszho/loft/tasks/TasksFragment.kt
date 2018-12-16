@@ -31,9 +31,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
 class TasksFragment : Fragment() {
     private val vm: TasksViewModel by viewModel()
     private val adapter: TaskAdapter by lazy { TaskAdapter() }
-    private val layoutManager: RecyclerView.LayoutManager by lazy {
-        LinearLayoutManager(requireContext())
-    }
+    private val layoutManager: RecyclerView.LayoutManager by lazy { LinearLayoutManager(requireContext()) }
 
     override fun onCreateView(
             inflater: LayoutInflater,
