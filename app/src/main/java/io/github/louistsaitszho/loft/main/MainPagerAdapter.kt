@@ -23,10 +23,10 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
 import io.github.louistsaitszho.loft.R
 import io.github.louistsaitszho.loft.chat.ChatFragment
+import io.github.louistsaitszho.loft.events.EventsFragment
 import io.github.louistsaitszho.loft.members.MembersFragment
 import io.github.louistsaitszho.loft.more.MoreFragment
 import io.github.louistsaitszho.loft.notes.NotesFragment
-import io.github.louistsaitszho.loft.schedule.ScheduleFragment
 import io.github.louistsaitszho.loft.tasks.TasksFragment
 
 class MainPagerAdapter(
@@ -47,7 +47,7 @@ class MainPagerAdapter(
         Page.CHAT -> ChatFragment()
         Page.NOTE -> NotesFragment()
         Page.TO_DO -> TasksFragment()
-        Page.SCHEDULE -> ScheduleFragment()
+        Page.SCHEDULE -> EventsFragment()
         Page.MEMBER -> MembersFragment()
         Page.MORE -> MoreFragment()
     }

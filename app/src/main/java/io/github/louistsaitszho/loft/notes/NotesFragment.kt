@@ -34,5 +34,4 @@ class NotesFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.fragment_notes, container, false)
 
-
 }

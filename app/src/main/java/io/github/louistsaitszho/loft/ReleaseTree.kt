@@ -14,19 +14,20 @@
  * You should have received a copy of the GNU General Public License
  * along with Loft Android Client.  If not, see <https://www.gnu.org/licenses/>.
  */
-package io.github.louistsaitszho.loft.common.model
+package io.github.louistsaitszho.loft
 
-import java.util.*
+import android.app.Application
+import android.widget.Toast
+import timber.log.Timber
 
-data class Task(
-        val id: UUID,
-        val progress: Progress,
-        val title: String
-        //TODO assignment of member
-        //TODO due data
-)
+/**
+ * TODO
+ * - this is not tested
+ * - this should integrate with Crashlytics/other logging stuff
+ */
+class ReleaseTree(private val application: Application) : Timber.Tree() {
+    override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
+        Toast.makeText(application, "$tag: $message", Toast.LENGTH_SHORT).show()
+    }
 
-enum class Progress {
-    NOT_DONE,
-    DONE
 }

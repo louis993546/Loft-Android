@@ -19,5 +19,4 @@ package io.github.louistsaitszho.loft.database.dao
 import android.arch.persistence.room.Dao
 
 @Dao
-interface MemberDao {
-}
+interface MemberDao

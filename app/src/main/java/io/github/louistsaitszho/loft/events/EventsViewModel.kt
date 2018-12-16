@@ -14,19 +14,12 @@
  * You should have received a copy of the GNU General Public License
  * along with Loft Android Client.  If not, see <https://www.gnu.org/licenses/>.
  */
-package io.github.louistsaitszho.loft.common.model
+package io.github.louistsaitszho.loft.events
 
-import java.util.*
+import io.github.louistsaitszho.loft.common.ScopedViewModel
 
-data class Task(
-        val id: UUID,
-        val progress: Progress,
-        val title: String
-        //TODO assignment of member
-        //TODO due data
-)
+class EventsViewModel(val repository: EventsRepository) : ScopedViewModel() {
+    fun addEvent() {
 
-enum class Progress {
-    NOT_DONE,
-    DONE
+    }
 }

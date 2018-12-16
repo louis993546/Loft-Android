@@ -14,19 +14,24 @@
  * You should have received a copy of the GNU General Public License
  * along with Loft Android Client.  If not, see <https://www.gnu.org/licenses/>.
  */
-package io.github.louistsaitszho.loft.common.model
+package io.github.louistsaitszho.loft.events
 
-import java.util.*
+import android.os.Bundle
+import android.support.v4.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import io.github.louistsaitszho.loft.R
+import org.koin.android.viewmodel.ext.android.viewModel
 
-data class Task(
-        val id: UUID,
-        val progress: Progress,
-        val title: String
-        //TODO assignment of member
-        //TODO due data
-)
+class EventsFragment : Fragment() {
+    private val vm: EventsViewModel by viewModel()
 
-enum class Progress {
-    NOT_DONE,
-    DONE
+    override fun onCreateView(
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
+    ): View? = inflater.inflate(R.layout.fragment_events, container, false)
+
 }
+

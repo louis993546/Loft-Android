@@ -14,18 +14,28 @@
  * You should have received a copy of the GNU General Public License
  * along with Loft Android Client.  If not, see <https://www.gnu.org/licenses/>.
  */
-package io.github.louistsaitszho.loft.tasks
+package io.github.louistsaitszho.loft.events
 
+import io.github.louistsaitszho.loft.common.model.Event
 import io.github.louistsaitszho.loft.common.model.Successful
-import io.github.louistsaitszho.loft.common.model.Task
+import org.threeten.bp.ZonedDateTime
 
-interface TasksRepository {
-    //TODO this will probably not exist in final version (no pagination)
-    suspend fun getTasksTemp(): List<Task>
+interface EventsRepository {
+    //TODO this probably won't exist in the final 1: no pagination support
+    suspend fun getEvents(): List<Event>
 
-    suspend fun createTask(newTask: Task): Successful
+    suspend fun createEvent(
+            startTime: ZonedDateTime,
+            endTime: ZonedDateTime,
+            title: String
+    ): Event
 
-    suspend fun updateTask(oldTask: Task, newTask: Task): Successful
+    suspend fun updateEvent(
+            oldEvent: Event,
+            newStartTime: ZonedDateTime?,
+            newEndTime: ZonedDateTime?,
+            newTitle: String?
+    ): Event
 
-    suspend fun deleteTask(task: Task): Successful
+    suspend fun deleteEvent(event: Event): Successful
 }

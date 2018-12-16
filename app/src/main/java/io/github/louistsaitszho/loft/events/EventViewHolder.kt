@@ -14,18 +14,20 @@
  * You should have received a copy of the GNU General Public License
  * along with Loft Android Client.  If not, see <https://www.gnu.org/licenses/>.
  */
-package io.github.louistsaitszho.loft.schedule
+package io.github.louistsaitszho.loft.events
 
-import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.view.LayoutInflater
+import android.support.v7.widget.RecyclerView
 import android.view.View
-import android.view.ViewGroup
-import io.github.louistsaitszho.loft.R
+import io.github.louistsaitszho.loft.common.model.Event
+import kotlinx.android.extensions.LayoutContainer
 
-class ScheduleFragment : Fragment() {
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_construction, container, false)
+/**
+ *
+ */
+class EventViewHolder(
+        override val containerView: View?
+) : RecyclerView.ViewHolder(containerView!!), LayoutContainer {
+    fun bind(event: Event, onClick: (Event) -> Unit) {
+        containerView?.setOnClickListener { onClick(event) }
     }
 }

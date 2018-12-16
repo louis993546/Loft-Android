@@ -14,8 +14,7 @@
  ~ You should have received a copy of the GNU General Public License
  ~ along with Loft Android Client.  If not, see <https://www.gnu.org/licenses/>.
 -->
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -51,9 +50,9 @@
         android:id="@+id/text_input_layout_loft_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
-        app:errorEnabled="true"
         app:layout_constraintTop_toBottomOf="@id/toolbar">
 
         <android.support.design.widget.TextInputEditText
@@ -61,8 +60,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/loft_name_hint"
-            android:inputType="textAutoCorrect"
             android:importantForAutofill="no"
+            android:inputType="textAutoCorrect"
             tools:text="Something" />
 
     </android.support.design.widget.TextInputLayout>
@@ -71,19 +70,19 @@
         android:id="@+id/text_input_layout_your_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
-        app:errorEnabled="true"
         app:layout_constraintTop_toBottomOf="@id/text_input_layout_loft_name">
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/edit_text_your_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:autofillHints="name"
             android:hint="@string/your_name_hint"
             android:imeOptions="actionSend"
             android:inputType="textAutoCorrect"
-            android:autofillHints="name"
             tools:text="Sth else" />
 
     </android.support.design.widget.TextInputLayout>

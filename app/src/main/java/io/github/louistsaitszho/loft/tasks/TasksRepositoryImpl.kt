@@ -16,6 +16,7 @@
  */
 package io.github.louistsaitszho.loft.tasks
 
+import io.github.louistsaitszho.loft.common.model.Successful
 import io.github.louistsaitszho.loft.common.model.Task
 import kotlinx.coroutines.delay
 import java.util.*

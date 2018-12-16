@@ -14,27 +14,17 @@
  * You should have received a copy of the GNU General Public License
  * along with Loft Android Client.  If not, see <https://www.gnu.org/licenses/>.
  */
-package io.github.louistsaitszho.loft
+package io.github.louistsaitszho.loft.common.model
 
-import org.koin.log.Logger
-import timber.log.Timber
+import org.threeten.bp.ZonedDateTime
+import java.util.*
 
 /**
- * A very simple adapter that teaches Koin how to log to through Timber
+ *
  */
-class TimberKoinLogger : Logger {
-    @Suppress("PrivatePropertyName")
-    private val TAG = "TimberKoin"
-
-    override fun debug(msg: String) {
-        Timber.tag(TAG).d(msg)
-    }
-
-    override fun err(msg: String) {
-        Timber.tag(TAG).e(msg)
-    }
-
-    override fun info(msg: String) {
-        Timber.tag(TAG).i(msg)
-    }
-}
+data class Event(
+        val id: UUID,
+        val startTime: ZonedDateTime,
+        val endTime: ZonedDateTime,
+        val title: String
+)

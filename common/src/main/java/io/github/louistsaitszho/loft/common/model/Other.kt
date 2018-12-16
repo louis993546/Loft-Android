@@ -14,8 +14,6 @@
  * You should have received a copy of the GNU General Public License
  * along with Loft Android Client.  If not, see <https://www.gnu.org/licenses/>.
  */
-package io.github.louistsaitszho.loft.schedule
+package io.github.louistsaitszho.loft.common.model
 
-import io.github.louistsaitszho.loft.common.ScopedViewModel
-
-class ScheduleViewModel : ScopedViewModel()
+typealias Successful = Boolean
