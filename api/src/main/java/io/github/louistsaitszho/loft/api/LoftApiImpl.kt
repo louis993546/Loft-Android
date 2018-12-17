@@ -16,6 +16,7 @@
  */
 package io.github.louistsaitszho.loft.api
 
+import io.github.louistsaitszho.loft.api.service.LoftsService
 import io.github.louistsaitszho.loft.common.keyValueStore.KeyValueStore
 import io.github.louistsaitszho.loft.common.model.*
 import retrofit2.Retrofit
@@ -24,7 +25,7 @@ import retrofit2.Retrofit
  * TODO instead of taking retrofit, take retrofit service interface
  */
 class LoftApiImpl(val retrofit: Retrofit, val keyValueStore: KeyValueStore) : LoftApi {
-    private val loftService: LoftService = retrofit.create(LoftService::class.java)
+    private val loftsService: LoftsService = retrofit.create(LoftsService::class.java)
 
     override suspend fun createLoft(name: String): Loft {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.

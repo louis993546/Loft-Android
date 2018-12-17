@@ -14,7 +14,10 @@
  * You should have received a copy of the GNU General Public License
  * along with Loft Android Client.  If not, see <https://www.gnu.org/licenses/>.
  */
-package io.github.louistsaitszho.loft.api
+package io.github.louistsaitszho.loft.api.service
+
+import retrofit2.http.PATCH
+import retrofit2.http.POST
 
 /**
  * TODO pretty much all of the return types are still in design
@@ -22,5 +25,10 @@ package io.github.louistsaitszho.loft.api
  *
  * API definition that retrofit needs
  */
-internal interface LoftService
+internal interface LoftsService {
+    @POST("/lofts")
+    fun postLofts()
 
+    @PATCH("/lofts")
+    fun patchLofts()
+}

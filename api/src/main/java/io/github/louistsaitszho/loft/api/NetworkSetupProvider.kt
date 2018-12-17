@@ -35,6 +35,7 @@ class NetworkSetupProvider {
                 .addConverterFactory(MoshiConverterFactory.create(moshi))
                 .baseUrl(BuildConfig.HOST)
                 .client(okHttpClient)
+                .validateEagerly(BuildConfig.DEBUG)
                 .build()
 
         /**
@@ -44,6 +45,7 @@ class NetworkSetupProvider {
 
         internal fun provideMoshi(): Moshi = Moshi.Builder()
                 .add(UuidAdapter())
+                //TODO date time
                 .build()
     }
 }
