@@ -18,6 +18,8 @@ package io.github.louistsaitszho.loft.api
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
+import io.github.louistsaitszho.loft.api.adapter.HttpStatusAdapter
+import io.github.louistsaitszho.loft.api.adapter.InternalErrorCodeAdapter
 import io.github.louistsaitszho.loft.api.adapter.UuidAdapter
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -45,6 +47,8 @@ class NetworkSetupProvider {
 
         internal fun provideMoshi(): Moshi = Moshi.Builder()
                 .add(UuidAdapter())
+                .add(HttpStatusAdapter())
+                .add(InternalErrorCodeAdapter())
                 //TODO date time
                 .build()
     }
