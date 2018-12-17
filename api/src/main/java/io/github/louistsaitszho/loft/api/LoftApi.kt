@@ -16,15 +16,47 @@
  */
 package io.github.louistsaitszho.loft.api
 
+import io.github.louistsaitszho.loft.common.model.*
+
 /**
  * TODO all the return type needs to be from .common.model.*
  */
 interface LoftApi {
-//    suspend fun createLoft(loftName: String, userName: String): CreateLoftResponse
-//
-//    suspend fun requestJoinLoft(loftCode: String, userName: String): PostJoinLoftResponse
-//
-//    suspend fun getNotes(): NoteListResponse
+    //1. create loft TODO this might need to take user name + return User as well
+    suspend fun createLoft(name: String): Loft
 
-//    suspend fun createNote(newNote: NewNoteRequest): NewNoteResponse
+    //2. create join loft request
+
+    //3. post task
+    suspend fun createTask(task: String): Task
+
+    //4. post event
+    suspend fun createEvent(): Event
+
+    //5. post note
+    suspend fun createNote(): Note
+
+    //6. edit task
+    suspend fun editTask(): Task
+
+    //7. edit event
+    suspend fun editEvent(): Event
+
+    //8. edit note
+    suspend fun editNote(): Event
+
+    //9. delete task
+    suspend fun deleteTask(task: Task): Successful
+
+    //10. delete event
+    suspend fun deleteEvent(event: Event): Successful
+
+    //11. delete note
+    suspend fun deleteNote(note: Note): Successful
+
+    //12. get tasks
+
+    //13. get events
+
+    //14. get notes
 }

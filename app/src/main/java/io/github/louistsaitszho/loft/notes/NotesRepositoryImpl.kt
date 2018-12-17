@@ -21,6 +21,10 @@ import io.github.louistsaitszho.loft.api.LoftApi
 import io.github.louistsaitszho.loft.common.model.Note
 
 class NotesRepositoryImpl(val api: LoftApi) : NotesRepository {
+    override suspend fun getNotesTemp(): List<Note> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     override suspend fun createNote(content: String): Note {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }

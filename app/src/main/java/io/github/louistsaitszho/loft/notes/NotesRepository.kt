@@ -20,6 +20,9 @@ import android.arch.paging.PagedList
 import io.github.louistsaitszho.loft.common.model.Note
 
 interface NotesRepository {
+    //This is just a test method
+    suspend fun getNotesTemp(): List<Note>
+
     suspend fun createNote(content: String): Note
 
     fun getNotesInPages(): PagedList<Note>
