@@ -28,4 +28,3 @@ data class Data<A : Attributes?, R : Relationships?, L : Links?, M : Meta?>(
         val links: L?,
         val meta: M?
 )
-

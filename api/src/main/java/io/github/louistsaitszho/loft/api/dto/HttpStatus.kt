@@ -16,6 +16,10 @@
  */
 package io.github.louistsaitszho.loft.api.dto
 
+/**
+ * HTTP Status code that this app can comprehend
+ * [Wikipedia](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
+ */
 enum class HttpStatus(val code: Int) {
     SUCCESS(200),
     BAD_REQUEST(400),
