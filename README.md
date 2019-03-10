@@ -1,10 +1,7 @@
 # Loft-Android
 
-`master` @ GitLab CI: [![pipeline status](https://gitlab.com/louis993546/Loft-Android/badges/master/pipeline.svg)](https://gitlab.com/louis993546/Loft-Android/commits/master)
+## History
 
-`master` @ CircleCI: [![CircleCI](https://circleci.com/gh/louistsaitszho/Loft-Android/tree/master.svg?style=svg)](https://circleci.com/gh/louistsaitszho/Loft-Android/tree/master)
+### 1st iteration: October 2018 - Dec 2018
 
-## Useful resources
-
-- [How to build](Build.md)
-- [Architecture & Structure](docs/Structure.md)
+### 2nd iteration: March 2019 - Present

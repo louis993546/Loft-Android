@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<lint>
-    <issue id="InvalidPackage">
-        <!--TODO there is no "release" build for Flipper right now-->
-        <ignore path="*/org.mozilla/rhino/*" />
-    </issue>
-</lint>
